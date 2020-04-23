@@ -70,6 +70,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+                    <a href="{{url('auth/google')}}" class='loginBtn loginBtn--google'>Google Login</a>
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
