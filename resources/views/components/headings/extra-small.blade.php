@@ -1,0 +1,1 @@
+<h6 class="{{ $classes }}">{{ $heading }}</h6>

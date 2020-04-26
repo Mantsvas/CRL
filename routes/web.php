@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -23,4 +20,15 @@ Auth::routes();
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Tournaments\TournamentController@index')->name('home');
+
+Route::resource('tournaments', 'Tournaments\TournamentController')->except('edit');
+Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->group(function () {
+    Route::post('/registerForTournament', 'TournamentTeamController@registerTeam')->name('registerForTournament');
+    Route::get('/approveTeam/{team}', 'TournamentController@approveTeam')->name('approveTeam');
+    Route::get('/removeTeam/{team}', 'TournamentController@removeTeam')->name('removeTeam');
+    Route::delete('/rejectTeam/{team}', 'TournamentController@rejectTeam')->name('rejectTeam');
+    Route::post('/addModerator', 'TournamentController@addModerator')->name('addModerator');
+    Route::post('/removeModerator', 'TournamentController@removeModerator')->name('removeModerator');
+    Route::post('/sponsorUpload/{tournament}', 'TournamentController@sponsorUpload')->name('sponsorUpload');
+});

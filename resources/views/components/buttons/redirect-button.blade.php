@@ -1,0 +1,1 @@
+<a class="btn btn-block btn-{{ $type }} btn-{{ $size }}" href="{{ $route }}">{{ $name }}</a>
