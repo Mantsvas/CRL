@@ -40,7 +40,8 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item"><a href="{{url('auth/google')}}" class="loginBtn loginBtn--google">Google Login</a></li>
+                            {{-- <li class="nav-item"><a href="{{ url('auth/google') }}" class="loginBtn loginBtn--google">{{ __('messages.Google Login') }}</a></li> --}}
+                            <li class="nav-item"><a href="{{ url('auth/facebook') }}" class="loginBtn loginBtn--facebook">{{ __('messages.Facebook Login') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
