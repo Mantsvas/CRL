@@ -33,6 +33,7 @@ return [
     'Player tag'                                        => 'Player tag',
     'Url'                                               => 'Url',
     'Google Login'                                      => 'Google Login',
+    'Facebook Login'                                    => 'Facebook Login',
     'Player name'                                       => 'Player name',
     'Upload'                                            => 'Upload',
     'Browse'                                            => 'Browse',

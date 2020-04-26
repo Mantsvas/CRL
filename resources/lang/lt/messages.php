@@ -21,6 +21,7 @@ return [
     'Info'                                              => 'Informacija',
     'Participiants'                                     => 'Dalyviai',
     'Google Login'                                      => 'Google prisijungimas',
+    'Facebook Login'                                    => 'Facebook prisijungimas',
     'Registration'                                      => 'Registracija',
     'Leaderboard'                                       => 'Lentelė',
     'Min'                                               => 'Mažiausiai',
