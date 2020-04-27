@@ -30,7 +30,7 @@ return [
     'Min'                                               => 'Mažiausiai',
     'Register'                                          => 'Registruoti',
     'Clan tag'                                          => 'Klano tagas',
-    'Ttag'                                              => 'Tagas',
+    'Tag'                                               => 'Tagas',
     'Waiting for approval'                              => 'Laukia patvirtinimo',
     'Rejected'                                          => 'Atmesta',
     'Reject'                                            => 'Atmesti',
