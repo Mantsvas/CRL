@@ -8,9 +8,8 @@
                 <th>{{ __('messages.Email') }}</th>
                 @if (Auth::user() && Auth::user()->is_admin)
                     <th class="min">
-                        <form action="{{ route('tournaments.addModerator') }}" method="post">
+                        <form action="{{ route('tournaments.addModerator', $tournament) }}" method="post">
                             @csrf
-                            <x-inputs.hidden name="tournament_id" :value="$tournament->id" />
                             <x-inputs.select name="user_id" :options="$users"/>
                             <x-buttons.submit_button :name="__('messages.Add')" />
                         </form>

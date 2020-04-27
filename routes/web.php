@@ -28,7 +28,7 @@ Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->gr
     Route::get('/approveTeam/{team}', 'TournamentController@approveTeam')->name('approveTeam');
     Route::get('/removeTeam/{team}', 'TournamentController@removeTeam')->name('removeTeam');
     Route::delete('/rejectTeam/{team}', 'TournamentController@rejectTeam')->name('rejectTeam');
-    Route::post('/addModerator', 'TournamentController@addModerator')->name('addModerator');
+    Route::post('/addModerator/{tournament}', 'TournamentController@addModerator')->name('addModerator');
     Route::post('/removeModerator', 'TournamentController@removeModerator')->name('removeModerator');
     Route::post('/sponsorUpload/{tournament}', 'TournamentController@sponsorUpload')->name('sponsorUpload');
 });

@@ -88,10 +88,9 @@ class TournamentController extends Controller
         }
     }
 
-    public function addModerator(Request $request)
+    public function addModerator(Request $request, Tournament $tournament)
     {
         if (Auth::user() && Auth::user()->is_admin) {
-            $tournament = Tournament::where('id', $request->tournament_id)->first();
             if ($tournament) {
                 $tournament->moderators()->attach($request->get('user_id'));
             }
