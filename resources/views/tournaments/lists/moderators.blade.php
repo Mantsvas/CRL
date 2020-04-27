@@ -18,8 +18,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                @foreach ($tournament->moderators as $moderator)
+            @foreach ($tournament->moderators as $moderator)
+                <tr>
                     <td>{{ $loop->index + 1 . '. ' . $moderator->name }}</td>
                     <td>{{ $moderator->email }}</td>
                     @if (Auth::user() && Auth::user()->is_admin)
@@ -32,8 +32,8 @@
                             </form>
                         </td>
                     @endif
-                @endforeach
-            </tr>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
