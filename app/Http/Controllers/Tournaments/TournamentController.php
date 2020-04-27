@@ -30,7 +30,6 @@ class TournamentController extends Controller
 
     public function show(Request $request, Tournament $tournament)
     {
-        dd($request->get('activeTab'));
         return view('tournaments.show', [
             'tournament' => $tournament,
             'activeTab'  => $request->get('activeTab') ?? Session::pull('activeTab') ?? 'info',
