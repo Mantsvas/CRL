@@ -1,6 +1,6 @@
 <x-cards.responsive-card :cardTitle="__('messages.Basic info')">
     <x-slot name="cardTools">
-        <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up for tournament')" />
+        <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up')" />
     </x-slot>
     <div class="row">
         <div class="col-12 col-md-8 border-left border-info" style="border-width: 5px;">
