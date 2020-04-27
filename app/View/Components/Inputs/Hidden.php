@@ -29,6 +29,6 @@ class Hidden extends Component
      */
     public function render()
     {
-        return view('components.inputs\hidden');
+        return view('components.inputs.hidden');
     }
 }
