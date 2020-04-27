@@ -23,6 +23,7 @@ return [
     'Registration status'                               => 'Registration status',
     'Waiting for approval'                              => 'Waiting for approval',
     'Rejected'                                          => 'Rejected',
+    'Sign up for tournament'                            => 'Sign up for tournament',
     'Reject'                                            => 'Reject',
     'Remove'                                            => 'Remove',
     'Sponsors'                                          => 'Sponsors',

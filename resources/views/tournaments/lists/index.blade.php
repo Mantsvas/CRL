@@ -2,9 +2,7 @@
     <table class="table table-hover text-nowrap">
         <thead>
             <tr>
-                @if (Auth::user() && Auth::user()->is_admin)
-                    <th class="min"></th>
-                @endif
+                <th class="min"></th>
                 <th>Pavadinimas</th>
                 <th>Registracijos pabaiga</th>
             </tr>
@@ -12,15 +10,17 @@
         <tbody>
             @foreach($tournaments as $tournament)
                 <tr>
-                    @if (Auth::user() && Auth::user()->is_admin)
-                        <td class="min">
+                    <td class="min">
+                        @if (Auth::user() && Auth::user()->is_admin)
                             <form action="{{ route('tournaments.destroy', $tournament) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Ištrinti</button>
                             </form>
-                        </td>
-                    @endif
+                        @else
+                        <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up for tournament')" />
+                        @endif
+                    </td>
                     <td><a href="{{ route('tournaments.show', $tournament) }}">{{ $tournament->title }}</a></td>
                     <td>{{ $tournament->start_date }}</td>
                 </tr>

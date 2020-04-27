@@ -28,12 +28,11 @@ class TournamentController extends Controller
         ]);
     }
 
-    public function show(Tournament $tournament)
+    public function show(Request $request, Tournament $tournament)
     {
-
         return view('tournaments.show', [
             'tournament' => $tournament,
-            'activeTab'  => Session::pull('activeTab') ?? 'info',
+            'activeTab'  => Session::pull('activeTab') ?? $request->get('activeTab') ?? 'info',
             'users'      => User::selectRaw('CONCAT(name, " ", email) as name, id')->whereNotIn('id', $tournament->moderators->pluck('id'))->get()->pluck('name', 'id')->prepend('', '')->toArray(),
         ]);
     }
