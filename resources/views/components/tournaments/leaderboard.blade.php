@@ -19,18 +19,18 @@
                             <td>{{ $team->score . ' / ' . $team->score_against }}</td>
                         </tr>
                         @foreach($team->games->sortBy('round') as $game)
-                            <tr class="hidden_{{$team->id}} d-none" style="background-color: #17a2b8"> 
+                            <tr class="hidden_{{$team->id}} d-none" > 
                                 <td></td>
-                                <td>
+                                <td style="background-color: #17a2b8" colspan="2">
                                     {{ $game->round }}. {{ __('messages.Round') }}
+                                    VS {{ $game->home_team_id == $team->id ? $game->awayTeam->title : $game->homeTeam->title }}
                                     @if ($game->winner_id == $team->id && $game->winner_id != null)
                                         <img src="/storage/images/winLogo.png" style="width: 15px" />
                                     @elseif ($game->winner_id != null)
                                         <img src="/storage/images/loseLogo.png" style="width: 15px" />
                                     @endif
                                 </td>
-                                <td>VS {{ $game->home_team_id == $team->id ? $game->awayTeam->title : $game->homeTeam->title }}</td>
-                                <td>{{ $game->home_team_id == $team->id ? $game->home_team_score . ' - ' . $game->away_team_score : $game->away_team_score . ' - ' . $game->home_team_score }}</td>
+                                <td style="background-color: #17a2b8">{{ $game->home_team_id == $team->id ? $game->home_team_score . ' - ' . $game->away_team_score : $game->away_team_score . ' - ' . $game->home_team_score }}</td>
                             </tr>
                         @endforeach
 
