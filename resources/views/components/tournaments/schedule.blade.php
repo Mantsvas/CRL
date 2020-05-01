@@ -10,12 +10,16 @@
                         <th></th>
                         <th></th>
                         <th></th>
+                        @if ($tournament->canModerate())
+                        <th class="min"></th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
+                    @csrf
                     @foreach($groups as $group => $games)
                         <tr style="background-color: #39cccc">
-                            <td colspan="5">{{ $group . ' ' . __('messages.Group') }}</td>
+                            <td colspan="{{$tournament->canModerate() ? 6 : 5 }}">{{ $group . ' ' . __('messages.Group') }}</td>
                         </tr>
                         @foreach($games as $game)
                             <tr>
@@ -23,17 +27,39 @@
                                     {{ $game->homeTeam->title }}
                                     @if ($game->winner_id == $game->homeTeam->id && $game->winner_id != null)
                                         <img src="/storage/images/winLogo.png" style="width: 15px" />
+                                    @elseif ($game->winner_id != null)
+                                        <img src="/storage/images/loseLogo.png" style="width: 15px" />
                                     @endif
                                 </td>
-                                <td>{{ isset($game->home_team_score) ? $game->home_team_score : ' ' }}</td>
-                                <td>VS</td>
-                                <td>{{ isset($game->away_team_score) ? $game->away_team_score : ' ' }}</td>
+                                <td>
+                                    {{ isset($game->home_team_score) ? $game->home_team_score : ' ' }}
+                                    @if ($tournament->canModerate() && ($game->home_team_id && $game->away_team_id))
+                                        <input id="homeResultGame_{{ $game->id }}" type="number" step="1" min="0" max="2" style="max-width: 50px">
+                                    @endif
+                                </td>
+                                <td>Vs</td>
+                                <td>
+                                    @if ($tournament->canModerate() && ($game->home_team_id && $game->away_team_id))
+                                        <input id="awayResultGame_{{ $game->id }}" type="number" step="1" min="0" max="2" style="max-width: 50px">
+                                    @endif
+                                    {{ isset($game->away_team_score) ? $game->away_team_score : ' ' }}
+                                </td>
                                 <td>
                                     @if ($game->winner_id == $game->awayTeam->id && $game->winner_id != null)
                                         <img src="/storage/images/winLogo.png" style="width: 15px" />
+                                    @elseif ($game->winner_id != null)
+                                        <img src="/storage/images/loseLogo.png" style="width: 15px" />
                                     @endif
                                     {{ $game->awayTeam->title }}
                                 </td>
+                                @if ($tournament->canModerate())
+                                    <td>
+                                        @if ($game->home_team_id && $game->away_team_id)
+                                            <button class="btn btn-flat btn-sm btn-success" onclick="setGameResult({{$game->id}})">{{__('messages.Submit score')}}</button>
+                                            {{-- <x-buttons.submit_button :name="__('messages.Submit score')" /> --}}
+                                        @endif
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     @endforeach

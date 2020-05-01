@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tournaments\Tournament;
 use App\Models\Tournaments\TournamentTeam;
+use App\Models\Tournaments\Game;
 use App\Models\Upload;
 use App\Models\Tournaments\Sponsor;
 
@@ -170,5 +171,30 @@ class TournamentController extends Controller
         $tournament->save();
 
         return redirect()->route('tournaments.show', $tournament);
+    }
+
+    public function setGameResult(Request $request)
+    {
+        Session::put('activeTab', 'schedule');
+
+        $game = Game::where('id', $request->get('game_id'))->first();
+        if ($game == null) {
+            return ['success' => false, 'error' => __('messages.You dont have permission to do it!')];
+        }
+
+        if (!$game->tournament->canModerate()) {
+            return ['success' => false, 'error' =>  __('messages.You dont have permission to do it!')];
+        }
+
+        if ($request->get('home_team_score') == $request->get('away_team_score')) {
+            return ['success' => false, 'error' =>  __('messages.Result cant be a draw!')];
+        }
+
+        $game->home_team_score = $request->get('home_team_score') ?? 0;
+        $game->away_team_score = $request->get('away_team_score') ?? 0;
+        $game->winner_id = $request->get('home_team_score') > $request->get('away_team_score') ? $game->home_team_id : $game->away_team_id;
+        $game->save();
+
+        return ['success' => true];
     }
 }

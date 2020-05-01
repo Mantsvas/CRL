@@ -20,4 +20,9 @@ class Game extends Model
     {
         return $this->homeTeam->group ? $this->homeTeam->group : $this->awayTeam->group;
     }
+
+    public function tournament()
+    {
+        return $this->belongsTo('App\Models\Tournaments\Tournament', 'tournament_id');
+    }
 }

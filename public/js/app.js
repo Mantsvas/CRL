@@ -49527,6 +49527,32 @@ var app = new Vue({
   el: '#app'
 });
 
+generateMsg = function generateMsg(type, msg) {
+  if (msg.length != null) {
+    if ($.inArray(type, ['danger', 'warning', 'success', 'info']) != -1) {
+      var message = '<div class="alert alert-' + type + ' alert-block">' + '<button type="button" class="close" data-dismiss="alert">&times;</button>' + '<strong>' + msg + '</strong>' + '</div>';
+    }
+  }
+
+  clearMsg();
+  showMsg(message);
+};
+
+showMsg = function showMsg(msg) {
+  var flash = $('#flash')[0];
+  var old_msg = flash.innerHTML;
+
+  if (!old_msg.includes(msg)) {
+    flash.innerHTML = msg + old_msg;
+  } else {
+    flash.innerHTML = msg;
+  }
+};
+
+clearMsg = function clearMsg() {
+  $('#flash')[0].innerHTML = '';
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

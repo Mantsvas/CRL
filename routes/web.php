@@ -33,3 +33,5 @@ Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->gr
     Route::post('/sponsorUpload/{tournament}', 'TournamentController@sponsorUpload')->name('sponsorUpload');
     Route::get('/startTournament/{tournament}', 'TournamentController@start')->name('start');
 });
+
+Route::post('ajax/tournaments/setGameResult', 'Tournaments\TournamentController@setGameResult')->name('ajax.tournaments.setGameResult');
