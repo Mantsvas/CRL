@@ -1,5 +1,14 @@
+@if (Auth::user() && (Auth::user()->is_admin || $tournament->canModerate()))
+    <div class="row mb-2">
+        <div class="col-12 col-md-3">
+            <x-buttons.redirect-button :name="__('messages.Start tournament')" :route="route('tournaments.start', $tournament)"/>
+        </div>
+    </div>
+@endif
 <div class="mt-4 table-responsive">
     <x-headings.small :heading="__('messages.Participiants') .' ' . count($tournament->applicants->where('confirmed', true)) . '/' . $tournament->max_participiants" />
+
+
     <table class="table table-hover">
         <thead>
             <tr>

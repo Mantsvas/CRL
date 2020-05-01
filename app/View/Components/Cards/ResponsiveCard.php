@@ -8,16 +8,18 @@ class ResponsiveCard extends Component
 {
     public $cardTitle;
     public $cardType;
+    public $contentClasses;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($cardTitle = null, $cardType = 'secondary')
+    public function __construct($cardTitle = null, $cardType = 'secondary', $contentClasses = null)
     {
         $this->cardTitle = $cardTitle;
         $this->cardType = $cardType;
+        $this->contentClasses = $contentClasses;
     }
 
     /**

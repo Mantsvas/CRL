@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -72,7 +73,20 @@
             <div class="container">
                 @yield('content')
             </div>
+
         </main>
     </div>
+    <script>
+        function toggleTeam(teamId) {
+            let isHidden = $('.mainTeam' + teamId).hasClass('hidden');
+            if (isHidden) {
+                $('.mainTeam' + teamId).removeClass('hidden').addClass('visible')
+                $('.hidden_' + teamId).removeClass('d-none');
+            } else {
+                $('.hidden_' + teamId).addClass('d-none');
+                $('.mainTeam' + teamId).removeClass('visible').addClass('hidden')
+            }
+        }
+    </script>
 </body>
 </html>

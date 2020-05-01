@@ -2,5 +2,7 @@
 <hr>
 <x-tournaments.sponsors :tournament="$tournament" />
 <hr>
-@include('tournaments.lists.moderators', ['tournament' => $tournament, 'users' => $users])
+@if (Auth::user() && Auth::user()->is_admin)
+    @include('tournaments.lists.moderators', ['tournament' => $tournament, 'users' => $users])
+@endif
 

@@ -9,28 +9,35 @@
     <x-tabs.tab :active="$activeTab" :tabs="$tournament->tabs()">
 
         @if ($tournament->stage == 'preparation')
-            <x-tabs.content :active="$activeTab" key="info">
 
+            <x-tabs.content :active="$activeTab" key="info">
                 <x-cards.responsive-card>
                     @include('tournaments.tabs.info')
                 </x-cards.responsive-card>
-
             </x-tabs.content>
 
             <x-tabs.content :active="$activeTab" key="players">
-
                 <x-cards.responsive-card>
                     @include('tournaments.tabs.players')
                 </x-cards.responsive-card>
+            </x-tabs.content>
 
-            </x-tabs.content>
         @else
+        
             <x-tabs.content :active="$activeTab" key="info">
-                Info
+                <x-cards.responsive-card>
+                    @include('tournaments.tabs.info')
+                </x-cards.responsive-card>
             </x-tabs.content>
+
             <x-tabs.content :active="$activeTab" key="players">
-                leaderboard
+                <x-tournaments.leaderboard :tournament="$tournament" />
             </x-tabs.content>
+
+            <x-tabs.content :active="$activeTab" key="schedule">
+                <x-tournaments.schedule :tournament="$tournament" />
+            </x-tabs.content>
+
         @endif
 
         

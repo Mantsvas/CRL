@@ -30,9 +30,21 @@ class TournamentController extends Controller
 
     public function show(Request $request, Tournament $tournament)
     {
+        $activeTab = $request->get('activeTab') ?? Session::pull('activeTab') ?? null;
+        if (!$activeTab) {
+            switch ($tournament->stage) {
+                case 'preparation':
+                    $activeTab = 'info';
+                    break;
+                case 'ongoing':
+                    $activeTab = 'players';
+                    break;
+            }
+        }
+
         return view('tournaments.show', [
             'tournament' => $tournament,
-            'activeTab'  => $request->get('activeTab') ?? Session::pull('activeTab') ?? 'info',
+            'activeTab'  => $activeTab,
             'users'      => User::selectRaw('CONCAT(name, " ", email) as name, id')->whereNotIn('id', $tournament->moderators->pluck('id'))->get()->pluck('name', 'id')->prepend('', '')->toArray(),
         ]);
     }
@@ -56,6 +68,7 @@ class TournamentController extends Controller
 
     public function approveTeam(TournamentTeam $team)
     {
+        Session::put('activeTab', 'players');
         if ($team->tournament->canModerate()) {
             $team->confirmToTournament();
 
@@ -67,6 +80,8 @@ class TournamentController extends Controller
 
     public function removeTeam(TournamentTeam $team)
     {
+        Session::put('activeTab', 'players');
+
         if ($team->tournament->canModerate()) {
             $team->removeFromTournament();
 
@@ -78,6 +93,8 @@ class TournamentController extends Controller
 
     public function rejectTeam(TournamentTeam $team)
     {
+        Session::put('activeTab', 'players');
+
         if ($team->tournament->canModerate()) {
             $team->delete();
 
@@ -128,5 +145,30 @@ class TournamentController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function start(Tournament $tournament)
+    {
+        Session::put('activeTab', 'players');
+        
+        if (!$tournament->canModerate() && !Auth::user()->is_admin) {
+            return redirect()->back()->with('alert-danger', __('messages.You dont have permission to do it!'));
+        }
+
+        if ($tournament->stage != 'preparation') {
+            return redirect()->back()->with('alert-danger', __('messages.You dont have permission to do it!'));
+        }
+
+        if ($tournament->min_participiants > count($tournament->teams)) {
+            return redirect()->back()->with('alert-danger', __('messages.Not enougt teams registered!'));
+        }
+
+        $tournament->splitTeamsToGroups();
+        $tournament->generateSchedule();
+
+        $tournament->stage = 'ongoing';
+        $tournament->save();
+
+        return redirect()->route('tournaments.show', $tournament);
     }
 }

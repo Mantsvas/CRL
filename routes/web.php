@@ -31,4 +31,5 @@ Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->gr
     Route::post('/addModerator/{tournament}', 'TournamentController@addModerator')->name('addModerator');
     Route::post('/removeModerator', 'TournamentController@removeModerator')->name('removeModerator');
     Route::post('/sponsorUpload/{tournament}', 'TournamentController@sponsorUpload')->name('sponsorUpload');
+    Route::get('/startTournament/{tournament}', 'TournamentController@start')->name('start');
 });

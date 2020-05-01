@@ -17,8 +17,8 @@
                                 @method('DELETE')
                                 <button type="submit">Ištrinti</button>
                             </form>
-                        @else
-                        <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up')" />
+                        @elseif ($tournament->stage == 'preparation')
+                            <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up')" />
                         @endif
                     </td>
                     <td><a href="{{ route('tournaments.show', $tournament) }}">{{ $tournament->title }}</a></td>
