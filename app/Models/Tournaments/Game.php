@@ -25,4 +25,24 @@ class Game extends Model
     {
         return $this->belongsTo('App\Models\Tournaments\Tournament', 'tournament_id');
     }
+
+    public function gameDetails()
+    {
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id');
+    }
+
+    public function gameDetails2vs2()
+    {
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->where('type', '2vs2');
+    }
+
+    public function gameDetailsKOTH()
+    {
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->where('type', 'KOTH');
+    }
+
+    public function gameDetails1vs1()
+    {
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->where('type', '1vs1');
+    }
 }

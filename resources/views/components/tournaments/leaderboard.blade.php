@@ -19,7 +19,7 @@
                             <td>{{ $team->score . ' / ' . $team->score_against }}</td>
                         </tr>
                         @foreach($team->games->sortBy('round') as $game)
-                            <tr class="hidden_{{$team->id}} d-none" > 
+                            <tr class="hidden_{{$team->id}}" style="display: none"> 
                                 <td></td>
                                 <td style="background-color: #17a2b8" colspan="2">
                                     {{ $game->round }}. {{ __('messages.Round') }}

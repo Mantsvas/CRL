@@ -32,6 +32,8 @@ Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->gr
     Route::post('/removeModerator', 'TournamentController@removeModerator')->name('removeModerator');
     Route::post('/sponsorUpload/{tournament}', 'TournamentController@sponsorUpload')->name('sponsorUpload');
     Route::get('/startTournament/{tournament}', 'TournamentController@start')->name('start');
+    Route::get('/gameDetails/{game}', 'GameController@editGameDetails')->name('gameDetails.edit');
+    Route::post('/gameDetails/{game}', 'GameController@storeGameDetails')->name('gameDetails.store');
 });
 
 Route::post('ajax/tournaments/setGameResult', 'Tournaments\TournamentController@setGameResult')->name('ajax.tournaments.setGameResult');
