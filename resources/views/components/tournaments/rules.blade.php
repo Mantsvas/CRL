@@ -6,7 +6,7 @@
     </x-slot>
     <div class="row">
         <div class="col-12 col-md-8 border-left border-info" style="border-width: 5px;">
-            {!! $tournament->description !!}
+            {!! $tournament->rules !!}
         </div>
         <div class="col-12 col-md-4 border-left border-info" style="border-width: 5px;">
             <div class="row">
@@ -67,12 +67,3 @@
     </div>
 
 </x-cards.responsive-card>
-@if (isset($tournament->video_link))
-    <div class="row">
-        <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-            <div class="video-responsive">
-                <iframe width="560" height="315" src="{{ $tournament->video_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-@endif

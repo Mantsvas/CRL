@@ -39,7 +39,9 @@
             </x-tabs.content>
 
         @endif
-
+        <x-tabs.content :active="$activeTab" key="rules">
+            <x-tournaments.rules :tournament="$tournament" />
+        </x-tabs.content>
         
     </x-tabs.tab>
 

@@ -9,7 +9,7 @@ use Auth;
 class Tournament extends Model
 {
     protected $fillable = [
-        'title', 'description', 'format', 'min_participiants', 'max_participiants', 'group_count', 'playoff_count', 'rules', 'type', 'stage', 'start_date'
+        'title', 'description', 'format', 'min_participiants', 'max_participiants', 'group_count', 'playoff_count', 'rules', 'type', 'stage', 'start_date', 'video_link'
     ];
 
     public function teams()
@@ -66,10 +66,12 @@ class Tournament extends Model
         if ($this->stage == 'preparation') {
             $tabs['info'] = __('messages.Info');
             $tabs['players'] = __('messages.Participiants') . ' / ' . __('messages.Registration');
+            $tabs['rules'] = __('messages.Rules');
         } else {
             $tabs['info'] = __('messages.Info');
             $tabs['players'] = __('messages.Leaderboard');
             $tabs['schedule'] = __('messages.Schedule');
+            $tabs['rules'] = __('messages.Rules');
         }
          
         return $tabs;

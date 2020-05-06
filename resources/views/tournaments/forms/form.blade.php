@@ -5,8 +5,10 @@
 
     <x-inputs.textarea label="Aprašymas" name="description" />
 
-    {{-- <x-inputs.textarea label="Taisyklės" name="rules" /> --}}
+    <x-inputs.textarea label="Taisyklės" name="rules" />
 
+    <x-inputs.text label="Video" name="video" />
+    
     <x-inputs.select label="Formatas" name="format" 
         :options="['round_robin' => 'Ratų sistema']" />
 

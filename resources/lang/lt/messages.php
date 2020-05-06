@@ -36,6 +36,7 @@ return [
     '4th match'                                         => '4-a kova',
     '5th match'                                         => '5-a kova',
     'Tag'                                               => 'Tagas',
+    'Rules'                                             => 'Taisyklės',
     'Waiting for approval'                              => 'Laukia patvirtinimo',
     'Rejected'                                          => 'Atmesta',
     'NO GAME'                                           => '(LAISVA)',

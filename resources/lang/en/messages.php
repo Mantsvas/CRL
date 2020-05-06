@@ -29,6 +29,7 @@ return [
     'Not enougt teams registered!'                      => 'Not enougt teams registered!',
     'Remove'                                            => 'Remove',
     'Sponsors'                                          => 'Sponsors',
+    'Rules'                                             => 'Rules',
     'Schedule'                                          => 'Schedule',
     'Overtime'                                          => 'Overtime',
     'Save changes'                                      => 'Save changes',
