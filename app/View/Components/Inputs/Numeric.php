@@ -14,13 +14,14 @@ class Numeric extends Component
     public $min;
     public $max;
     public $step;
+    public $required;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label = null, $name = null, $placeholder = null, $value = null, $id = null, $min = null, $max = null, $step = null)
+    public function __construct($label = null, $name = null, $placeholder = null, $value = null, $id = null, $min = null, $max = null, $step = null, $required = null)
     {
         $this->label = $label;
         $this->name = $name;
@@ -30,6 +31,7 @@ class Numeric extends Component
         $this->min = $min;
         $this->max = $max;
         $this->step = $step;
+        $this->required = $required;
     }
 
     /**

@@ -1,5 +1,5 @@
 <div>
-    <ul class="nav nav-tabs" role="tablist">
+    <ul class="nav nav-tabs customTabs" role="tablist">
         @foreach($tabs as $key => $tab)
             <li class="nav-item">
                 <a 

@@ -9,7 +9,8 @@ use Auth;
 class Tournament extends Model
 {
     protected $fillable = [
-        'title', 'description', 'format', 'min_participiants', 'max_participiants', 'group_count', 'playoff_count', 'rules', 'type', 'stage', 'start_date', 'video_link'
+        'title', 'description', 'description_en', 'format', 'min_participiants', 'max_participiants', 'group_count', 
+        'playoff_count', 'rules', 'rules_en', 'type', 'stage', 'start_date', 'video_link'
     ];
 
     public function teams()

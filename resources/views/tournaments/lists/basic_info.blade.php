@@ -6,7 +6,7 @@
     </x-slot>
     <div class="row">
         <div class="col-12 col-md-8 border-left border-info" style="border-width: 5px;">
-            {!! $tournament->description !!}
+            {!! \App::getLocale() == 'lt' ? $tournament->description : $tournament->description_en !!}
         </div>
         <div class="col-12 col-md-4 border-left border-info" style="border-width: 5px;">
             <div class="row">

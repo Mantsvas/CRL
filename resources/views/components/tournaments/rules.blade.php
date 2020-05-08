@@ -1,4 +1,4 @@
-<x-cards.responsive-card :cardTitle="__('messages.Basic info')">
+<x-cards.responsive-card :cardTitle="__('messages.Rules')">
     <x-slot name="cardTools">
         @if ($tournament->stage == 'preparation')
             <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up')" />
@@ -6,7 +6,7 @@
     </x-slot>
     <div class="row">
         <div class="col-12 col-md-8 border-left border-info" style="border-width: 5px;">
-            {!! $tournament->rules !!}
+            {!! \App::getLocale() == 'lt' ? $tournament->rules : $tournament->rules_en !!}
         </div>
         <div class="col-12 col-md-4 border-left border-info" style="border-width: 5px;">
             <div class="row">

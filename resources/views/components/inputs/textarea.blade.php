@@ -4,7 +4,7 @@
         <label>{{ $label }}</label>
     @endif
 
-    <textarea class="form-control {{ $inputClasses ?? null}}" 
+    <textarea class="form-control {{ $inputClasses ?? null}}" {{ $required }}
             name="{{ $name }}" 
             id="{{ $id}}" 
             cols="{{ $cols }}" 

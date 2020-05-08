@@ -22,7 +22,7 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 
 Route::get('/', 'Tournaments\TournamentController@index')->name('home');
 
-Route::resource('tournaments', 'Tournaments\TournamentController')->except('edit');
+Route::resource('tournaments', 'Tournaments\TournamentController');
 Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->group(function () {
     Route::post('/registerForTournament', 'TournamentTeamController@registerTeam')->name('registerForTournament');
     Route::get('/approveTeam/{team}', 'TournamentController@approveTeam')->name('approveTeam');

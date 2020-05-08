@@ -50,6 +50,23 @@ class TournamentController extends Controller
         ]);
     }
 
+    public function edit(Tournament $tournament)
+    {
+        return view('tournaments.edit', [
+            'tournament' => $tournament
+        ]);
+    }
+
+    public function update(Request $request, Tournamnet $tournament)
+    {
+        $stage = $tournament->stage;
+        $tournament->fill($request->all());
+        $tournament->stage = $stage;
+        $tournament->save();
+
+        return redirect()->route('tournaments.show', $tournament);
+    }
+
     public function store(Request $request)
     {
         $tournament = new Tournament;

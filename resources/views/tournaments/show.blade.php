@@ -2,6 +2,9 @@
 
 @section('content')
 
+    @if ($tournament->canModerate())
+        <a class="btn btn-flat btn-info m-2" href="{{ route('tournaments.edit', $tournament) }}"><i class="fa fa-edit"></i></a>
+    @endif
     <x-headings.large :heading="$tournament->title" />
 
     @include('layouts.errors')
@@ -40,7 +43,9 @@
 
         @endif
         <x-tabs.content :active="$activeTab" key="rules">
-            <x-tournaments.rules :tournament="$tournament" />
+            <x-cards.responsive-card>
+                <x-tournaments.rules :tournament="$tournament" />
+            </x-cards.responsive-card>
         </x-tabs.content>
         
     </x-tabs.tab>

@@ -25,9 +25,9 @@
 
     <x-google.analytics />
 </head>
-<body>
+<body style="background-image: url('../storage/images/cr-background.jpg');">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img  src="/storage/images/logo.png" alt="">
@@ -68,9 +68,9 @@
                             </li>
                         @endguest
                         @if (\App::getLocale() != 'lt')
-                            <li class="nav-item"><a href="{{ route('changeLang', 'lt') }}"><img src="/storage/images/lt-flag.png"></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('changeLang', 'lt') }}"><img src="/storage/images/lt-flag.png"></a></li>
                         @else
-                            <li class="nav-item"><a href="{{ route('changeLang', 'en') }}"><img src="/storage/images/en-flag.png"></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('changeLang', 'en') }}"><img src="/storage/images/en-flag.png"></a></li>
                         @endif
                     </ul>
                 </div>

@@ -4,7 +4,7 @@
             <span class="input-group-text">{{ $label }}</span>
         @endif
     </div>
-    <input id="{{ $id }}" class="form-control {{ $inputClasses ?? null }}" 
+    <input id="{{ $id }}" class="form-control {{ $inputClasses ?? null }}" {{ $required }}
             name="{{ $name }}" 
             type="number"  
             placeholder="{{ $placeholder }}" 
