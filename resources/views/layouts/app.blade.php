@@ -67,6 +67,11 @@
                                 </div>
                             </li>
                         @endguest
+                        @if (\App::getLocale() != 'lt')
+                            <li class="nav-item"><a href="{{ route('changeLang', 'lt') }}"><img src="/storage/images/lt-flag.png"></a></li>
+                        @else
+                            <li class="nav-item"><a href="{{ route('changeLang', 'en') }}"><img src="/storage/images/en-flag.png"></a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

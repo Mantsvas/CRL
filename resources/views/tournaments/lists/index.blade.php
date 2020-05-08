@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th class="min"></th>
-                <th>Pavadinimas</th>
-                <th>Registracijos pabaiga</th>
+                <th>{{ __('messages.Title') }}</th>
+                <th>{{ __('messages.Registration ends') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -15,7 +15,7 @@
                             <form action="{{ route('tournaments.destroy', $tournament) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Ištrinti</button>
+                                <button type="submit">{{ __('messages.Delete') }}</button>
                             </form>
                         @elseif ($tournament->stage == 'preparation')
                             <x-buttons.redirect-button :route="route('tournaments.show', ['tournament' => $tournament, 'activeTab' => 'players'])" :name="__('messages.Sign up')" />

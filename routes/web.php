@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('changelanguage/{lang}', 'LanguageController@setLanguage')->name('changeLang');
 Auth::routes();
 
 // OAuth

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <x-cards.responsive-card cardTitle="Turnyrai">
+    <x-cards.responsive-card :cardTitle="__('messages.Tournaments')">
 
         @if (Auth::user() && Auth::user()->is_admin) 
             <x-slot name="cardTools">
