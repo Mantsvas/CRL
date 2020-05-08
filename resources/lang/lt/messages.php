@@ -70,7 +70,7 @@ return [
     'Registration successfull!'                         => 'Registracija sėkminga',
     'Team title'                                        => 'Komandos pavadinimas',
     'Squad'                                             => 'Sudėtis',
-    'Registration status'                               => 'Refistracijos būsena',
+    'Registration status'                               => 'Registracijos būsena',
     'Registration form'                                 => 'Registracijos forma',
     'Moderator was succesfully added!'                  => 'Moderatorius buvo sėkmingai pridėtas!',
     'Moderator was succesfully removed!'                => 'Moderatorius buvo sėkmingai pašalintas!',
