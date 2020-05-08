@@ -37407,8 +37407,8 @@ h1 {
 }
 
 .customTabs .nav-item .active {
-  background-color: #28a745;
   border: none;
+  font-weight: 700;
 }
 
 body {
