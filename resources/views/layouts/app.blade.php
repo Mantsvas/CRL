@@ -79,6 +79,9 @@
 
         <main class="py-4">
             <div class="container">
+                @if (env('APP_ENV') == 'production')
+                    @include('adsense.top_horizontal')
+                @endif
                 @yield('content')
             </div>
 
