@@ -77,16 +77,6 @@ class TournamentTeam extends Model
         return $status;
     }
 
-    public function getSquad()
-    {
-        $squad = '';
-        foreach($this->players as $player) {
-            $squad .= '<span class="btn btn-sm btn-warning m-2 p-2" style="cursor: default">' . $player->name . ' [' . mb_strtoupper($player->tag) . '] </span>';
-        }
-
-        return $squad;
-    }
-
     public function confirmToTournament() : void
     {
         $this->confirmed = true;

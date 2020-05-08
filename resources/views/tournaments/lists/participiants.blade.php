@@ -13,15 +13,13 @@
         <thead>
             <tr>
                 <th>{{ __('messages.Team title') }}</th>
-                <th>{{ __('messages.Squad') }}</th>
                 <th class="min">{{ __('messages.Registration status') }}</th>
             </tr>
         </thead>
         <tbody>
             @foreach($tournament->applicants as $team)
-                <tr style="background-color: {{ $team->deleted_at != null ? '#FFCCCB' : ($team->confirmed ? '#90EE90' : '')}}">
+                <tr style="cursor:pointer; background-color: {{ $team->deleted_at != null ? '#FFCCCB' : ($team->confirmed ? '#90EE90' : '')}}" class="mainSquad_{{ $team->id }} hidden" onclick="toggleSquad({{ $team->id }})">
                     <td><div class="m-2">{{ $loop->index + 1 . '. ' . $team->title }}</div></td>
-                    <td>{!! $team->getSquad() !!}</td>
                     <td>
                         <div class="mb-2">{{ $team->getStatus() }}</div>
     
@@ -46,6 +44,13 @@
                         @endif
                     </td>
                 </tr>
+                @foreach($team->players as $player)
+                    <tr class="squad_{{ $team->id }}" style="display:none">
+                        <td colspan="2">
+                            <a href="https://royaleapi.com/player/{{ $player->tag }}">{{ $loop->index + 1 }}. {{ $player->name }}</a>
+                        </td>
+                    </tr>
+                @endforeach 
             @endforeach
         </tbody>
     </table>

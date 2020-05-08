@@ -12,7 +12,7 @@
                 </thead>
                 <tbody>
                     @foreach ($teams as $team)     
-                        <tr class="hidden mainTeam{{$team->id}}" onclick="toggleTeam({{ $team->id }})">
+                        <tr class="hidden mainTeam{{$team->id}}" onclick="toggleTeam({{ $team->id }})" style="cursor:pointer">
                             <td>{{ $loop->index + 1 . '. ' . $team->title }}</td>
                             <td>{{ $team->wins }}</td>
                             <td>{{ $team->loses }}</td>

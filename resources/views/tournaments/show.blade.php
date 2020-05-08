@@ -55,14 +55,35 @@
 @section('script')
 
     <script>
+        var actionActivated = false;
         function toggleTeam(teamId) {
-            let isHidden = $('.mainTeam' + teamId).hasClass('hidden');
-            if (isHidden) {
-                $('.mainTeam' + teamId).removeClass('hidden').addClass('visible')
-                $('.hidden_' + teamId).toggle('slow');
-            } else {
-                $('.hidden_' + teamId).toggle('slow');
-                $('.mainTeam' + teamId).removeClass('visible').addClass('hidden')
+            if (!actionActivated) {
+                actionActivated = true;
+
+                let isHidden = $('.mainTeam' + teamId).hasClass('hidden');
+                if (isHidden) {
+                    $('.mainTeam' + teamId).removeClass('hidden').addClass('visible');
+                    $('.hidden_' + teamId).toggle('slow');
+                } else {
+                    $('.hidden_' + teamId).toggle('slow');
+                    $('.mainTeam' + teamId).removeClass('visible').addClass('hidden');
+                }
+                actionActivated = false;
+            }
+        }
+
+        function toggleSquad(squadId) {
+            if (!actionActivated) {
+                actionActivated = true;
+                let isHidden = $('.mainSquad' + squadId).hasClass('hidden');
+                if (isHidden) {
+                    $('.mainSquad' + squadId).removeClass('hidden').addClass('visible');
+                    $('.squad_' + squadId).toggle('slow');
+                } else {
+                    $('.squad_' + squadId).toggle('slow');
+                    $('.mainSquad' + squadId).removeClass('visible').addClass('hidden');
+                }
+                actionActivated = false;
             }
         }
     </script>
