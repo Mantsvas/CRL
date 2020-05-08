@@ -57,7 +57,7 @@ class TournamentController extends Controller
         ]);
     }
 
-    public function update(Request $request, Tournamnet $tournament)
+    public function update(Request $request, Tournament $tournament)
     {
         $stage = $tournament->stage;
         $tournament->fill($request->all());
