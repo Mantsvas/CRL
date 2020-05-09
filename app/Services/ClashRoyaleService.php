@@ -2,33 +2,32 @@
 
 namespace App\Services;
 
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Exception\GuzzleException;
 
 class ClashRoyaleService
 {
-    private $token;
     private $url;
+    private $token;
     private $headers;
+    private $client;
 
-    public function __contruct()
+    public function __construct()
     {
         $this->token = config('clash_royale_api');
-        $this->url = config('clash_royale_url');
+        $this->url = config('app.clash_royale_url');
         $this->headers = [
             'Authorization' => 'Bearer ' . $this->token,
             'content-type' => 'application/json',
             'Accept' => 'application/json'
         ];
+        $this->client = Http::withToken($this->token)->withHeaders($this->headers);
     }
 
     public function getClan($tag)
     {
         try {
-            $client = new Client();
-            $response = $client->get($this->url . '/clans/%23' . strtoupper($tag), [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->get($this->url . '/clans/%23' . strtoupper($tag));
 
            return $response;
         } catch (GuzzleException $e) {
@@ -39,14 +38,12 @@ class ClashRoyaleService
     public function getPlayer($tag)
     {
         try {
-            $client = new Client();
-            $response = $client->get($this->url . '/players/%23' . strtoupper($tag), [
-                'headers' => $this->headers,
-            ]);
+            $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag));
 
+            dd($response);
            return $response;
         } catch (GuzzleException $e) {
-            dd($e);
+            
             return 'error';
         }
     }
