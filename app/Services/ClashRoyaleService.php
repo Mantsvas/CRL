@@ -14,7 +14,7 @@ class ClashRoyaleService
 
     public function __construct()
     {
-        $this->token = config('clash_royale_api');
+        $this->token = config('app.clash_royale_api');
         $this->url = config('app.clash_royale_url');
         $this->headers = [
             'Authorization' => 'Bearer ' . $this->token,
