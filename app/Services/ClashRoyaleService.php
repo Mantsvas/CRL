@@ -46,6 +46,7 @@ class ClashRoyaleService
 
            return $response;
         } catch (GuzzleException $e) {
+            dd($e);
             return 'error';
         }
     }
