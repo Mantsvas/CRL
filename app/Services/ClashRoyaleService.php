@@ -21,7 +21,7 @@ class ClashRoyaleService
             'content-type' => 'application/json',
             'Accept' => 'application/json'
         ];
-        $this->client = Http::withHeaders($this->headers);
+        $this->client = Http::withToken($this->token)->withHeaders($this->headers);
     }
 
     public function getClan($tag)
