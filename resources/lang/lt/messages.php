@@ -18,6 +18,7 @@ return [
     'Upload'                                            => 'Įkelti',
     'Browse'                                            => 'Ieškoti',
     'Title'                                             => 'Pavadinimas',
+    'Team leader contacts'                              => 'Komandos kontaktai',
     'Url'                                               => 'Nuoroda',
     'Info'                                              => 'Informacija',
     'Participiants'                                     => 'Dalyviai',

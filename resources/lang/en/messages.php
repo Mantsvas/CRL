@@ -33,6 +33,7 @@ return [
     'Tournaments'                                       => 'Tournaments',
     'Registration ends'                                 => 'Registration ends',
     'Delete'                                            => 'Delete',
+    'Team leader contacts'                              => 'Team contacts',
     'Schedule'                                          => 'Schedule',
     'Overtime'                                          => 'Overtime',
     'Save changes'                                      => 'Save changes',

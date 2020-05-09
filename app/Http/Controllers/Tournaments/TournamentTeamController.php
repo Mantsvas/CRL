@@ -22,6 +22,7 @@ class TournamentTeamController extends Controller
         $team->title = $request->get('title');
         $team->tag = $request->get('tag');
         $team->capacity = $team->tournament->teamCapacity();
+        $team->contacts = $request->get('contacts');
         $team->save();
 
         $players = [];

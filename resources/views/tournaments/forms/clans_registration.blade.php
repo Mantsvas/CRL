@@ -20,6 +20,8 @@
         </div>
     @endfor
 
+    <x-inputs.text :label="__('messages.Team leader contacts') . ' (Messenger, Facebook)' " name="contacts" />
+
     <x-buttons.submit_button :name="__('messages.Register')" />
 
 </form>
