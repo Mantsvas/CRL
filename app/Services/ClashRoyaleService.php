@@ -17,7 +17,7 @@ class ClashRoyaleService
         $this->token = config('app.clash_royale_api');
         $this->url = config('app.clash_royale_url');
         $this->headers = [
-            // 'Authorization' => 'Bearer ' . $this->token,
+            'Authorization' => 'Bearer ' . $this->token,
             'content-type' => 'application/json',
             'Accept' => 'application/json'
         ];
