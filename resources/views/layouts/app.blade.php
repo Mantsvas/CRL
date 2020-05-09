@@ -79,9 +79,9 @@
 
         <main class="py-4">
             <div class="container">
-                @include('adsense.top_horizontal')
                 @yield('content')
             </div>
+            @include('adsense.top_horizontal')
 
         </main>
     </div>
