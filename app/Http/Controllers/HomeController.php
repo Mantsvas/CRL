@@ -29,6 +29,6 @@ class HomeController extends Controller
 
     public function player(CRApi $api, $tag)
     {
-        return $api->getPlayer($tag);
+        return response([ 'response' => $api->getPlayer($tag)]);
     }
 }
