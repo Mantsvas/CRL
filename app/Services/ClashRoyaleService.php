@@ -40,6 +40,7 @@ class ClashRoyaleService
         try {
             $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag));
 
+            dd($response);
             return $response;
         } catch (GuzzleException $e) {
             
