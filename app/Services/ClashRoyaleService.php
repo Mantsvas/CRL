@@ -26,7 +26,21 @@ class ClashRoyaleService
     {
         try {
             $client = new Client();
-            $response = $client->get($this->url . '/clans/%' . $tag, [
+            $response = $client->get($this->url . '/clans/%23' . strtoupper($tag), [
+                'headers' => $this->headers,
+            ]);
+
+           return $response;
+        } catch (GuzzleException $e) {
+            return $e;
+        }
+    }
+
+    public function getPlayer($tag)
+    {
+        try {
+            $client = new Client();
+            $response = $client->get($this->url . '/players/%23' . strtoupper($tag), [
                 'headers' => $this->headers,
             ]);
 

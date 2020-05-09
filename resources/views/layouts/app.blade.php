@@ -39,7 +39,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        {{-- <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link">{{ __('messages.Posts') }}</a></li>
+                        <li class="nav-item"><a href="{{ route('tournaments.index') }}" class="nav-link">{{ __('messages.Tournaments') }}</a></li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
