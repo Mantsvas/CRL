@@ -17,8 +17,8 @@ class ClashRoyaleService
         $this->token = config('app.clash_royale_api');
         $this->url = config('app.clash_royale_url');
         $this->headers = [
-            'Authorization' => 'Bearer ' . $this->token,
-            'content-type' => 'application/json',
+            // 'Authorization' => 'Bearer ' . $this->token,
+            'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];
         $this->client = Http::withToken($this->token)->withHeaders($this->headers);
