@@ -39,7 +39,9 @@ class ClashRoyaleService
     public function getPlayer($tag)
     {
         try {
-            $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag), $this->headers);
+            $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag), [
+                    'headers' => $this->headers
+                ]);
 
             dd($response);
             return $response;
