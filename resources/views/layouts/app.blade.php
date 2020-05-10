@@ -82,7 +82,9 @@
             <div class="container">
                 @yield('content')
             </div>
-            @include('adsense.top_horizontal')
+            <div class="container">
+                @include('adsense.top_horizontal')
+            </div>
 
         </main>
     </div>
