@@ -30,6 +30,7 @@ class HomeController extends Controller
     public function player(CRApi $api, $tag)
     {
         $api = new CRApi;
-        dd($api->getPlayer($tag));
+        $data = $api->getPlayer($tag);
+        dd($data->bestTrophies);
     }
 }
