@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/playerbytag/{tag}', 'HomeController@player');
+Route::get('/playerbytag/{tag}', 'HomeController@player');
 
 Route::get('changelanguage/{lang}', 'LanguageController@setLanguage')->name('changeLang');
 Auth::routes();
