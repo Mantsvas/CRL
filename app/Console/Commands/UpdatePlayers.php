@@ -48,9 +48,8 @@ class UpdatePlayers extends Command
         foreach ($players as $player) {
             $apiData = $this->api->getPlayer($player->tag);
 
-           \Log::debug(json_encode($player));
-           \Log::debug(json_encode($apiData->bestTrophies));
-            $player->max_trophies = $apiData->bestTrophies;
+            $player->max_trophies = $apiData->bestTrophies ?? null;
+            $player->save();
         }
     }
 }
