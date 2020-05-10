@@ -17,6 +17,7 @@ class Player extends Model
 
     public function fixedTag()
     {
+        $tag = $this->tag;
         if ($tag[0] == '#') {
             $tag = substr($tag, 1);
         }
