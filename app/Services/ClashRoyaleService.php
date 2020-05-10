@@ -47,7 +47,7 @@ class ClashRoyaleService
                 'headers' => $this->headers
             ]);
 
-            $response = json_decode($response->getBody()->getContents());
+            $response = $response->getBody()->getContents();
             
             return $response;
         } catch (GuzzleException $e) {
