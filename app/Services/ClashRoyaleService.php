@@ -40,9 +40,11 @@ class ClashRoyaleService
     {
         try {
             $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag), [
-                    'headers' => $this->headers
-                ]);
+                'headers' => $this->headers
+            ]);
 
+            $response = json_decode($response->getBody()->getContents());
+            
             dd($response);
             return $response;
         } catch (GuzzleException $e) {
