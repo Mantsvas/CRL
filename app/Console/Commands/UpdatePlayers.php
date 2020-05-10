@@ -49,7 +49,7 @@ class UpdatePlayers extends Command
             $apiData = $this->api->getPlayer($player->tag);
 
             dd($player, $apiData->bestTrophies);
-            $player->max_trophies = $apiData->bestTrophies;
+            $player->max_trophies = $apiData['bestTrophies'];
         }
     }
 }
