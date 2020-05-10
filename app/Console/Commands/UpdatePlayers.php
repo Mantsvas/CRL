@@ -51,6 +51,7 @@ class UpdatePlayers extends Command
             if (isset($apiData->bestTrophies)) {
                 $player->max_trophies = $apiData->bestTrophies;
                 $player->tag = $player->fixedTag();
+                $player->name = $player->name;
                 $player->save();
             }
         }
