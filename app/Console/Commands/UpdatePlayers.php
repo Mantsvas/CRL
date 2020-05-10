@@ -43,7 +43,7 @@ class UpdatePlayers extends Command
     public function handle()
     {
         $currentDate = Carbon::now();
-        $players = Player::where('updated_at', '<', $currentDate->subDays(5))->whereNotNull($tag)->get();
+        $players = Player::where('updated_at', '<', $currentDate->subDays(5))->whereNotNull('tag')->get();
 
         foreach ($players as $player) {
             $apiData = $this->api->getPlayer($player->tag);
