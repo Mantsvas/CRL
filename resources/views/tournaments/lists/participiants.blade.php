@@ -18,8 +18,8 @@
         </thead>
         <tbody>
             @foreach($tournament->applicants as $team)
-                <tr style="cursor:pointer; background-color: {{ $team->deleted_at != null ? '#FFCCCB' : ($team->confirmed ? '#90EE90' : '')}}" class="mainSquad_{{ $team->id }} hidden" onclick="toggleSquad({{ $team->id }})">
-                    <td><div class="m-2">{{ $loop->index + 1 . '. ' . $team->title }}</div></td>
+                <tr style="background-color: {{ $team->deleted_at != null ? '#FFCCCB' : ($team->confirmed ? '#90EE90' : '')}}" >
+                    <td style="cursor:pointer;" class="mainSquad_{{ $team->id }} hidden" onclick="toggleSquad({{ $team->id }})"><div class="m-2">{{ $loop->index + 1 . '. ' . $team->title }}</div></td>
                     <td>
                         <div class="mb-2">{{ $team->getStatus() }}</div>
     
