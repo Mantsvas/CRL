@@ -31,6 +31,6 @@ class HomeController extends Controller
     {
         $api = new CRApi;
         $data = $api->getPlayer($tag);
-        dd($data->bestTrophies);
+        dd($data);
     }
 }
