@@ -60,7 +60,7 @@ class TournamentTeam extends Model
 
     public function players()
     {
-        return $this->belongsToMany('App\Models\Player', 'tournament_team_player');
+        return $this->belongsToMany('App\Models\Player', 'tournament_team_player')->orderBy('max_trophies', 'desc');
     }
 
     public function getStatus()
