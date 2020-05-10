@@ -46,8 +46,11 @@
                 </tr>
                 @foreach($team->players as $player)
                     <tr class="squad_{{ $team->id }}" style="display:none">
-                        <td colspan="2">
+                        <td>
                             <a href="https://royaleapi.com/player/{{ $player->tag }}">{{ $loop->index + 1 }}. {{ $player->name }}</a>
+                        </td>
+                        <td title="{{ __('messages.Personal Best') }}">
+                            {{ __('messages.PB') }}: {{ $player->max_trophies }}
                         </td>
                     </tr>
                 @endforeach 

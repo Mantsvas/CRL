@@ -19,6 +19,8 @@ return [
     'Browse'                                            => 'Ieškoti',
     'Title'                                             => 'Pavadinimas',
     'Team leader contacts'                              => 'Komandos kontaktai',
+    'PB'                                                => 'PB',
+    'Personal Best'                                     => 'Geriausias rezultatas',
     'Url'                                               => 'Nuoroda',
     'Info'                                              => 'Informacija',
     'Participiants'                                     => 'Dalyviai',

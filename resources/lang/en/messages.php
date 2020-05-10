@@ -34,6 +34,8 @@ return [
     'Registration ends'                                 => 'Registration ends',
     'Delete'                                            => 'Delete',
     'Team leader contacts'                              => 'Team contacts',
+    'PB'                                                => 'PB',
+    'Personal Best'                                     => 'Personal Best',
     'Schedule'                                          => 'Schedule',
     'Overtime'                                          => 'Overtime',
     'Save changes'                                      => 'Save changes',

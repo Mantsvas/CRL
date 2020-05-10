@@ -48,9 +48,11 @@ class UpdatePlayers extends Command
         foreach ($players as $player) {
             $apiData = $this->api->getPlayer($player->fixedTag());
 
-            $player->max_trophies = $apiData->bestTrophies ?? null;
-            $player->tag = $player->fixedTag();
-            $player->save();
+            if (isset($apiData->bestTrophies)) {
+                $player->max_trophies = $apiData->bestTrophies;
+                $player->tag = $player->fixedTag();
+                $player->save();
+            }
         }
     }
 }
