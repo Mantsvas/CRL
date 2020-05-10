@@ -14,4 +14,15 @@ class Player extends Model
     {
         return $this->belongsToMany('App\Models\tournaments\TournamentTeam', 'tournament_team_player');
     }
+
+    public function fixedTag()
+    {
+        if ($tag[0] == '#') {
+            $tag = substr($tag, 1);
+        }
+
+        $tag = str_replace('O', '0', $tag);
+
+        return $tag;
+    }
 }

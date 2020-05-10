@@ -46,9 +46,10 @@ class UpdatePlayers extends Command
         $players = Player::whereNotNull('tag')->get();
 
         foreach ($players as $player) {
-            $apiData = $this->api->getPlayer($player->tag);
+            $apiData = $this->api->getPlayer($player->fixedTag());
 
             $player->max_trophies = $apiData->bestTrophies ?? null;
+            $player->tag = $player->fixedTag();
             $player->save();
         }
     }
