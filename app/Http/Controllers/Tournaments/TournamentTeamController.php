@@ -27,7 +27,7 @@ class TournamentTeamController extends Controller
 
         $players = [];
         foreach ($request->get('player_tag') as $key => $tag) {
-            $players[$key] = ['tag' => $tag, 'name' => null];
+            $players[$key] = ['tag' => $this->fixTag($tag), 'name' => null];
         }
 
         foreach ($request->get('player_name') as $key => $name) {
@@ -38,6 +38,15 @@ class TournamentTeamController extends Controller
 
         Session::put('activeTab', 'players');
         return redirect()->back()->with('alert-success', __('messages.Registration successfull!'));
+    }
+
+    private function fixTag($tag)
+    {
+        if ($tag[0] == '#') {
+            $tag = substr($tag, 1);
+        }
+
+        return $tag;
     }
 
     public function addPlayerToTeam(Array $players, $team) : void
