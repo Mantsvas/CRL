@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\GuzzleException;
 
 class ClashRoyaleService
@@ -21,7 +22,7 @@ class ClashRoyaleService
             'content-type' => 'application/json',
             'Accept' => 'application/json'
         ];
-        $this->client = Http::withToken($this->token)->withHeaders($this->headers);
+        $this->client = new Client;
     }
 
     public function getClan($tag)
@@ -38,7 +39,7 @@ class ClashRoyaleService
     public function getPlayer($tag)
     {
         try {
-            $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag));
+            $response = $this->client->get($this->url . '/players/%23' . strtoupper($tag), $this->headers);
 
             dd($response);
             return $response;
