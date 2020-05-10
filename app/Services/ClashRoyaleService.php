@@ -28,9 +28,13 @@ class ClashRoyaleService
     public function getClan($tag)
     {
         try {
-            $response = $this->client->get($this->url . '/clans/%23' . strtoupper($tag));
+            $response = $this->client->get($this->url . '/clans/%23' . strtoupper($tag), [
+                'headers' => $this->headers
+            ]);
 
-           return $response;
+            $response = json_decode($response->getBody()->getContents());
+
+            return $response;
         } catch (GuzzleException $e) {
             return $e;
         }
@@ -45,7 +49,6 @@ class ClashRoyaleService
 
             $response = json_decode($response->getBody()->getContents());
             
-            dd($response);
             return $response;
         } catch (GuzzleException $e) {
             return 'error';
