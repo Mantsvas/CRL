@@ -11,6 +11,13 @@ use App\Services\ClashRoyaleService;
 
 class TournamentTeamController extends Controller
 {
+    public function show(TournamentTeam $team)
+    {
+        return view('tournaments.teams.show', [
+            'team' => $team 
+        ]);
+    }
+
     public function registerTeam(Request $request, ClashRoyaleService $CRapi)
     {
         if (!$request->get('tournament_id') || !$request->get('title')) {

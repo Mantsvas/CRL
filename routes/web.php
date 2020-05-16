@@ -36,6 +36,7 @@ Route::name('tournaments.')->prefix('tournaments')->namespace('Tournaments')->gr
     Route::get('/startTournament/{tournament}', 'TournamentController@start')->name('start');
     Route::get('/gameDetails/{game}', 'GameController@editGameDetails')->name('gameDetails.edit');
     Route::post('/gameDetails/{game}', 'GameController@storeGameDetails')->name('gameDetails.store');
+    Route::get('/teams/{team}', 'TournamentTeamController@show')->name('team.show');
 });
 
 Route::post('ajax/tournaments/setGameResult', 'Tournaments\TournamentController@setGameResult')->name('ajax.tournaments.setGameResult');
