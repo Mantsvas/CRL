@@ -18,7 +18,7 @@
         </div>
     </x-cards.responsive-card>
 
-    <div class="container">
+    <div class="my-2">
         @include('adsense.top_horizontal')
     </div>
 
