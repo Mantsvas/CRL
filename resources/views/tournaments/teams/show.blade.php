@@ -10,7 +10,7 @@
                     @foreach ($team->players as $player)     
                         <tr>
                             <td><a href="https://royaleapi.com/player/{{ $player->fixedTag() }}" >{{ $player->name }}</a></td>
-                            <td>PB: {{ $player->bestTrophies }}</td>
+                            <td>PB: {{ $player->max_trophies }}</td>
                         </tr>
                     @endforeach
                 </tbody>
