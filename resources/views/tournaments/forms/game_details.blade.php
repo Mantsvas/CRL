@@ -41,10 +41,10 @@
                                 <x-headings.small :heading="__('messages.' . $title[$i] . ' match')"  />
                             </div>
                             <div class="col-6 col-md-4 order-md-1">
-                                <x-inputs.numeric name="'2vs2[game_' . $i . '][homeScore]'" :value="$gameDetails['2vs2']['game' . $i]['homeScore'] ?? null" />
+                                <x-inputs.numeric :name="'2vs2[game_' . $i . '][homeScore]'" :value="$gameDetails['2vs2']['game' . $i]['homeScore'] ?? null" />
                             </div>
                             <div class="col-6 col-md-4 order-md-3">
-                                <x-inputs.numeric name="'2vs2[game_' . $i . '][awayScore]'" :value="$gameDetails['2vs2']['game' . $i]['awayScore'] ?? null" />
+                                <x-inputs.numeric :name="'2vs2[game_' . $i . '][awayScore]'" :value="$gameDetails['2vs2']['game' . $i]['awayScore'] ?? null" />
                             </div>
                         </div>
                     @endfor
