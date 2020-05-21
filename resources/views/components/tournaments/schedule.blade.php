@@ -56,7 +56,7 @@
                                     <td class="min">
                                         @if ($game->home_team_id && $game->away_team_id)
                                             <button class="btn btn-flat btn-sm btn-success" onclick="setGameResult({{$game->id}})"><i class="fa fa-save"></i></button>
-                                            {{-- <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a> --}}
+                                            <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                         @endif
                                     </td>
                                 @endif

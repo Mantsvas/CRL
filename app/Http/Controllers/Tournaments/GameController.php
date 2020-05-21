@@ -17,7 +17,8 @@ class GameController extends Controller
         }
 
         return view('tournaments.forms.game_details', [
-            'game' => $game
+            'game'       => $game,
+            'gameDetails' => $game->getDetails(),
         ]);
     }
 
@@ -83,11 +84,11 @@ class GameController extends Controller
                             break;
                             case 'KOTH':
                             case 'overtime':
-                                if (isset($stage['home_team_player']) && isset($stage['away_team_player']) && isset($stage['homeScore']) && isset($stage['awayScore'])) {
-                                    $gameDetail->home_player_1 = $stage['home_team_player'];
-                                    $gameDetail->away_player_1 = $stage['away_team_player'];
-                                    $gameDetail->home_score = $stage['homeScore'];
-                                    $gameDetail->away_score = $stage['awayScore'];
+                                if (isset($details['home_team_player']) && isset($details['away_team_player']) && isset($details['homeScore']) && isset($details['awayScore'])) {
+                                    $gameDetail->home_player_1 = $details['home_team_player'];
+                                    $gameDetail->away_player_1 = $details['away_team_player'];
+                                    $gameDetail->home_score = $details['homeScore'];
+                                    $gameDetail->away_score = $details['awayScore'];
                                     if ($gameDetail->home_score > $gameDetail->away_score) {
                                         $gameDetail->winner_id_1 = $gameDetail->home_player_1;
                                         $gameDetail->winner_side = 'home';
@@ -111,7 +112,7 @@ class GameController extends Controller
         $winner2vs2['home'] = GameDetail::where(['game_id' => $game->id, 'type' => '2vs2', 'winner_side' => 'home'])->count();
         $winner2vs2['away'] = GameDetail::where(['game_id' => $game->id, 'type' => '2vs2', 'winner_side' => 'away'])->count();
         $winnerKOTH['home'] = GameDetail::where(['game_id' => $game->id, 'type' => 'KOTH', 'winner_side' => 'home'])->count();;
-        $winnerKOTH['away'] = GameDetail::where(['game_id' => $game->id, 'type' => 'KOTH', 'winner_side' => 'home'])->count();;
+        $winnerKOTH['away'] = GameDetail::where(['game_id' => $game->id, 'type' => 'KOTH', 'winner_side' => 'away'])->count();;
         $winnerOvertime['home'] = GameDetail::where(['game_id' => $game->id, 'type' => 'overtime', 'winner_side' => 'home'])->count();;
         $winnerOvertime['away'] = GameDetail::where(['game_id' => $game->id, 'type' => 'overtime', 'winner_side' => 'away'])->count();;
 
