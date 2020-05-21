@@ -24,7 +24,7 @@
                         @foreach($games as $game)
                             <tr>
                                 <td>
-                                    {{ $game->homeTeam->title }}
+                                    <a href="{{ route('tournaments.team.show', $game->homeTeam->id) }}">{{ $game->homeTeam->title }}</a>
                                     @if ($game->winner_id == $game->homeTeam->id && $game->winner_id != null)
                                         <img src="/storage/images/winLogo.png" style="width: 15px" />
                                     @elseif ($game->winner_id != null)
@@ -50,7 +50,7 @@
                                     @elseif ($game->winner_id != null)
                                         <img src="/storage/images/loseLogo.png" style="width: 15px" />
                                     @endif
-                                    {{ $game->awayTeam->title }}
+                                    <a href="{{ route('tournaments.team.show', $game->awayTeam->id) }}">{{ $game->awayTeam->title }}</a>
                                 </td>
                                 @if ($tournament->canModerate())
                                     <td class="min">
