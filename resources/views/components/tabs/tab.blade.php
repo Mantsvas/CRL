@@ -4,12 +4,12 @@
             <li class="nav-item">
                 <a 
                     class="nav-link {{ $active == $key ? 'active' : '' }}" 
-                    href="#{{ $key }}" 
+                    href="{{ route('tournaments.show2', [ 'tournament' => $tournament, 'activeTab' => $key ]) }}" 
                     id="{{ $key }}-tab" 
-                    aria-controls="{{ $key }}" 
+                    {{-- aria-controls="{{ $key }}" 
                     role="tab" 
                     data-toggle="tab" 
-                    role="tab"
+                    role="tab" --}}
                 >{{ $tab }}</a>
             </li>
         @endforeach

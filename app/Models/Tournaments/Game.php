@@ -33,17 +33,17 @@ class Game extends Model
 
     public function gameDetails2vs2()
     {
-        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->where('type', '2vs2');
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->with(['homePlayer1', 'homePlayer2', 'awayPlayer1', 'awayPlayer2'])->where('type', '2vs2');
     }
 
     public function gameDetailsKOTH()
     {
-        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->where('type', 'KOTH');
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->with(['homePlayer1', 'awayPlayer1'])->where('type', 'KOTH');
     }
 
     public function gameDetails1vs1()
     {
-        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->where('type', 'overtime');
+        return $this->hasMany('App\Models\Tournaments\GameDetail', 'game_id')->with(['homePlayer1', 'awayPlayer1'])->where('type', 'overtime');
     }
 
     public function getDetails()

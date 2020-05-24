@@ -1,1 +1,1 @@
-turnyrine lentele
+<x-tournaments.leaderboard :tournament="$tournament" />

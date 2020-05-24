@@ -38,7 +38,27 @@ class TournamentController extends Controller
                     $activeTab = 'info';
                     break;
                 case 'ongoing':
-                    $activeTab = 'players';
+                    $activeTab = 'leaderboard';
+                    break;
+            }
+        }
+
+        return view('tournaments.show', [
+            'tournament' => $tournament,
+            'activeTab'  => $activeTab,
+            'users'      => User::selectRaw('CONCAT(name, " ", email) as name, id')->whereNotIn('id', $tournament->moderators->pluck('id'))->get()->pluck('name', 'id')->prepend('', '')->toArray(),
+        ]);
+    }
+
+    public function show2(Request $request, Tournament $tournament, String $activeTab = null)
+    {
+        if (!$activeTab) {
+            switch ($tournament->stage) {
+                case 'preparation':
+                    $activeTab = 'info';
+                    break;
+                case 'ongoing':
+                    $activeTab = 'leaderboard';
                     break;
             }
         }

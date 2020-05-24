@@ -8,16 +8,18 @@ class Tab extends Component
 {
     public $tabs;
     public $active;
+    public $tournament;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($tabs, $active = null)
+    public function __construct($tabs, $tournament, $active = null)
     {
         $this->tabs = $tabs;
         $this->active = $active;
+        $this->tournament = $tournament;
     }
 
     /**

@@ -1,0 +1,1 @@
+<x-tournaments.rules :tournament="$tournament" />

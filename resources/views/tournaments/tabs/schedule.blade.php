@@ -1,1 +1,1 @@
-schedule
+<x-tournaments.schedule :tournament="$tournament" />

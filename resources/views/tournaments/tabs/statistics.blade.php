@@ -1,0 +1,1 @@
+<x-tournaments.statistics :tournament="$tournament" />

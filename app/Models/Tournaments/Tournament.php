@@ -70,9 +70,10 @@ class Tournament extends Model
             $tabs['rules'] = __('messages.Rules');
         } else {
             $tabs['info'] = __('messages.Info');
-            $tabs['players'] = __('messages.Leaderboard');
+            $tabs['leaderboard'] = __('messages.Leaderboard');
             $tabs['schedule'] = __('messages.Schedule');
             $tabs['rules'] = __('messages.Rules');
+            $tabs['statistics'] = __('messages.Statistics');
         }
          
         return $tabs;

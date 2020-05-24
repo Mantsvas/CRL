@@ -9,9 +9,9 @@
 
     @include('layouts.errors')
 
-    <x-tabs.tab :active="$activeTab" :tabs="$tournament->tabs()">
+    <x-tabs.tab :active="$activeTab" :tabs="$tournament->tabs()" :tournament="$tournament" />
 
-        @if ($tournament->stage == 'preparation')
+        {{-- @if ($tournament->stage == 'preparation')
 
             <x-tabs.content :active="$activeTab" key="info">
                 <x-cards.responsive-card>
@@ -48,7 +48,14 @@
             </x-cards.responsive-card>
         </x-tabs.content>
         
-    </x-tabs.tab>
+    </x-tabs.tab> --}}
+
+
+    <x-tabs.content :active="$activeTab" :key="$activeTab">
+        <x-cards.responsive-card>
+            @include('tournaments.tabs.' . $activeTab)
+        </x-cards.responsive-card>
+    </x-tabs.content>
 
 @endsection
 
