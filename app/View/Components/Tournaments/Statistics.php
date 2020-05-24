@@ -47,21 +47,25 @@ class Statistics extends Component
                 if (!isset($details2vs2[$detail->home_player_1])) {
                     $details2vs2[$detail->home_player_1] = $this->setEmptyDataset();
                     $details2vs2[$detail->home_player_1]['player'] = $detail->homePlayer1;
+                    $details2vs2[$detail->home_player_1]['team'] = $game->homeTeam;
                 }
 
                 if (!isset($details2vs2[$detail->home_player_2])) {
                     $details2vs2[$detail->home_player_2] = $this->setEmptyDataset();
                     $details2vs2[$detail->home_player_2]['player'] = $detail->homePlayer2;
+                    $details2vs2[$detail->home_player_2]['team'] = $game->homeTeam;
                 }
 
                 if (!isset($details2vs2[$detail->away_player_1])) {
                     $details2vs2[$detail->away_player_1] = $this->setEmptyDataset();
                     $details2vs2[$detail->away_player_1]['player'] = $detail->awayPlayer1;
+                    $details2vs2[$detail->away_player_1]['team'] = $game->awayTeam;
                 }
 
                 if (!isset($details2vs2[$detail->away_player_2])) {
                     $details2vs2[$detail->away_player_2] = $this->setEmptyDataset();
                     $details2vs2[$detail->away_player_2]['player'] = $detail->awayPlayer2;
+                    $details2vs2[$detail->away_player_2]['team'] = $game->awayTeam;
                 }
 
                 if ($detail->winner_side == 'home') {
@@ -99,11 +103,13 @@ class Statistics extends Component
                 if (!isset($detailsKOTH[$detail->home_player_1])) {
                     $detailsKOTH[$detail->home_player_1] = $this->setEmptyDataset();
                     $detailsKOTH[$detail->home_player_1]['player'] = $detail->homePlayer1;
+                    $detailsKOTH[$detail->home_player_1]['team'] = $game->homeTeam;
                 }
 
                 if (!isset($detailsKOTH[$detail->away_player_1])) {
                     $detailsKOTH[$detail->away_player_1] = $this->setEmptyDataset();
                     $detailsKOTH[$detail->away_player_1]['player'] = $detail->awayPlayer1;
+                    $detailsKOTH[$detail->away_player_1]['team'] = $game->awayTeam;
                 }
 
                 if ($detail->winner_side == 'home') {
@@ -131,11 +137,13 @@ class Statistics extends Component
                 if (!isset($detailsKOTH[$detail->home_player_1])) {
                     $detailsKOTH[$detail->home_player_1] = $this->setEmptyDataset();
                     $detailsKOTH[$detail->home_player_1]['player'] = $detail->homePlayer1;
+                    $detailsKOTH[$detail->home_player_1]['team'] = $game->homeTeam;
                 }
 
                 if (!isset($detailsKOTH[$detail->away_player_1])) {
                     $detailsKOTH[$detail->away_player_1] = $this->setEmptyDataset();
                     $detailsKOTH[$detail->away_player_1]['player'] = $detail->awayPlayer1;
+                    $detailsKOTH[$detail->away_player_1]['team'] = $game->awayTeam;
                 }
 
                 if ($detail->winner_side == 'home') {

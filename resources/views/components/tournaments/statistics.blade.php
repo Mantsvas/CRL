@@ -4,6 +4,7 @@
             <thead>
                 <tr>
                     <th>{{ __('messages.Player') }}</th>
+                    <th>{{ __('messages.Team') }}</th>
                     <th>{{ __('messages.Played') }}</th>
                     <th>{{ __('messages.Wins') }}</th>
                     <th>{{ __('messages.Crowns') }}</th>
@@ -14,6 +15,11 @@
                 @foreach ($rankingByWins2vs2 as $player)   
                     <tr>
                         <td><a href="https://royaleapi.com/player/{{ $player['player']->fixedTag() }}" >{{ $loop->index + 1 . '. ' . $player['player']->name }}</a></td>
+                        <td>
+                            @if (isset($player['team']))
+                                <a href="{{ route('tournaments.team.show', $player['team']->id) }}">{{ $player['team']->title }}</a>
+                            @endif
+                        </td>
                         <td>{{ $player['played'] }}</td>
                         <td>{{ $player['won'] }}</td>
                         <td>{{ $player['crowsCollected'] . ' / ' .  $player['crowsLost'] }}</td>
@@ -35,6 +41,7 @@
             <thead>
                 <tr>
                     <th>{{ __('messages.Player') }}</th>
+                    <th>{{ __('messages.Team') }}</th>
                     <th>{{ __('messages.Played') }}</th>
                     <th>{{ __('messages.Wins') }}</th>
                     <th>{{ __('messages.Crowns') }}</th>
@@ -45,6 +52,11 @@
                 @foreach ($rankingByWinsKOTH as $player)   
                     <tr>
                         <td><a href="https://royaleapi.com/player/{{ $player['player']->fixedTag() }}" >{{ $loop->index + 1 . '. ' . $player['player']->name }}</a></td>
+                        <td>
+                            @if (isset($player['team']))
+                                <a href="{{ route('tournaments.team.show', $player['team']->id) }}">{{ $player['team']->title }}</a>
+                            @endif
+                        </td>
                         <td>{{ $player['played'] }}</td>
                         <td>{{ $player['won'] }}</td>
                         <td>{{ $player['crowsCollected'] . ' / ' .  $player['crowsLost'] }}</td>
