@@ -31,6 +31,7 @@ class HomeController extends Controller
     {
         $api = new CRApi;
         $data = $api->getPlayer($tag);
+        dd($data->name);
         dd($data);
     }
 }
