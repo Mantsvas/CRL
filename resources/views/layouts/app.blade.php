@@ -47,8 +47,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __('messages.Login') }}</a></li>
-                            <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">{{ __('messages.Sign up') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('login.provider', 'GOOGLE') }}" class="nav-link">{{ __('messages.Google Login') }}</a></li>
+                            {{-- <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __('messages.Login') }}</a></li>
+                            <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">{{ __('messages.Sign up') }}</a></li> --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

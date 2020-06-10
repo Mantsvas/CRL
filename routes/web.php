@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/playerbytag/{tag}', 'HomeController@player');
 
 Route::get('changelanguage/{lang}', 'LanguageController@setLanguage')->name('changeLang');
-Auth::routes();
+// Auth::routes();
 
 // OAuth
-Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/', 'Tournaments\TournamentController@index')->name('home');
