@@ -37,7 +37,13 @@
                                     <img src="/storage/images/loseLogo.png" style="width: 15px" />
                                 @endif
                             </td>
-                            <td>VS <a href="{{ route('tournaments.team.show', $game->home_team_id == $team->id ? $game->away_team_id : $game->home_team_id) }}">{{ $game->home_team_id == $team->id ? $game->awayTeam->title : $game->homeTeam->title }}</a></td>
+                            <td>VS
+                                @if ($game->away_team_id && $game->home_team_id)
+                                    <a href="{{ route('tournaments.team.show', $game->home_team_id == $team->id ? $game->away_team_id : $game->home_team_id) }}">{{ $game->home_team_id == $team->id ? $game->awayTeam->title : $game->homeTeam->title }}</a>
+                                @else
+                                    DAY OFF
+                                @endif
+                            </td>
                             <td>{{ $game->home_team_id == $team->id ? $game->home_team_score . ' - ' . $game->away_team_score : $game->away_team_score . ' - ' . $game->home_team_score }}</td>
                         </tr>
                     @endforeach
