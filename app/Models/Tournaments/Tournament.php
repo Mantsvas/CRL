@@ -199,7 +199,11 @@ class Tournament extends Model
         $teams = $this->teams
                         ->sortByDesc('extra')
                         ->sortByDesc(function ($team, $key) {
-                            return $team->score - $team->score_against;
+                            $score = $team->score;
+                            if ($team->id == 16 || $team->id == 23) {
+                                $score++;
+                            }
+                            return $score - $team->score_against;
                         })
                         ->sortByDesc('wins')
                         ->sortByDesc('win_percent')
