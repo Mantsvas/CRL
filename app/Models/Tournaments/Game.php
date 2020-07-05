@@ -152,4 +152,17 @@ class Game extends Model
 
         return $details;
     }
+
+    public function setNextPlayoffGame()
+    {
+        $nextPlayoffGame = Game::where(['tournament_id' => $this->tournament_id, 'stage' => 'playoff', 'round' => floor($this->round / 2)])->first();
+
+        if ($this->round % 2 == 0) {
+            $nextPlayoffGame->home_team_id = $this->winner_id;
+        } else {
+            $nextPlayoffGame->away_team_id = $this->winner_id;
+        }
+
+        $nextPlayoffGame->save();
+    }
 }

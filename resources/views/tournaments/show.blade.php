@@ -50,7 +50,6 @@
         
     </x-tabs.tab> --}}
 
-
     <x-tabs.content :active="$activeTab" :key="$activeTab">
         <x-cards.responsive-card>
             @include('tournaments.tabs.' . $activeTab)

@@ -30,7 +30,27 @@ class Tournament extends Model
 
     public function games()
     {
-        return $this->hasMany('App\Models\Tournaments\Game', 'tournament_id');
+        return $this->hasMany('App\Models\Tournaments\Game', 'tournament_id')->where('stage', 'regular');
+    }
+
+    public function getQuaterFinals()
+    {
+        return $this->hasMany('App\Models\Tournaments\Game', 'tournament_id')->where('stage', 'playoff')->whereIn('round', [4, 5, 6, 7])->orderBy('round', 'asc');
+    }
+
+    public function getSemiFinals()
+    {
+        return $this->hasMany('App\Models\Tournaments\Game', 'tournament_id')->where('stage', 'playoff')->whereIn('round', [2, 3])->orderBy('round', 'asc');
+    }
+
+    public function getFinals()
+    {
+        return $this->hasMany('App\Models\Tournaments\Game', 'tournament_id')->where('stage', 'playoff')->whereIn('round', [1])->orderBy('round', 'asc');
+    }
+
+    public function playoffGames()
+    {
+        return $this->hasMany('App\Models\Tournaments\Game', 'tournament_id')->where('stage', 'playoff');
     }
 
     public function sponsors()
@@ -68,15 +88,39 @@ class Tournament extends Model
             $tabs['info'] = __('messages.Info');
             $tabs['players'] = __('messages.Participiants') . ' / ' . __('messages.Registration');
             $tabs['rules'] = __('messages.Rules');
-        } else {
+        } elseif ($this->stage == 'ongoing') {
             $tabs['info'] = __('messages.Info');
             $tabs['leaderboard'] = __('messages.Leaderboard');
             $tabs['schedule'] = __('messages.Schedule');
             $tabs['rules'] = __('messages.Rules');
             $tabs['statistics'] = __('messages.Statistics');
+        } elseif ($this->stage == 'playoff') {
+            $tabs['info'] = __('messages.Info');
+            $tabs['leaderboard'] = __('messages.Leaderboard');
+            $tabs['schedule'] = __('messages.Schedule');
+            $tabs['playoff'] = __('messages.Playoff');
+            $tabs['rules'] = __('messages.Rules');
+            $tabs['statistics'] = __('messages.Statistics');
         }
          
         return $tabs;
+    }
+
+    public function setActiveTab()
+    {
+        switch ($this->stage) {
+            case 'preparation':
+                return 'info';
+                break;
+            case 'ongoing':
+                return 'leaderboard';
+                break;
+            case 'playoff':
+                return 'playoff';
+                break;
+        }
+
+        return 'info';
     }
 
     public function splitTeamsToGroups() : void
@@ -166,6 +210,44 @@ class Tournament extends Model
         }
 
         return $leaderboard;
+    }
+
+    public function setPlayoffTree()
+    {
+        $leaderboard = $this->getLeaderboard();
+
+        $seeds = [];
+        $seedIndex = 1;
+        foreach ($leaderboard as $group) {
+            foreach ($group as $team) {
+                if ($seedIndex > 8) {
+                    continue;
+                }
+                $seeds[$seedIndex] = $team;
+                $seedIndex++;
+            }
+        }
+
+        $games = [];
+        $games[1] = [ 'team_1' => $seeds[1], 'team_2' => $seeds[8], 'round' => 4];
+        $games[2] = [ 'team_1' => $seeds[4], 'team_2' => $seeds[5], 'round' => 5 ];
+        $games[3] = [ 'team_1' => $seeds[3], 'team_2' => $seeds[6], 'round' => 6 ];
+        $games[4] = [ 'team_1' => $seeds[2], 'team_2' => $seeds[7], 'round' => 7 ];
+        $games[5] = ['team_1' => null, 'team_2' => null, 'round' => 2];
+        $games[6] = ['team_1' => null, 'team_2' => null,'round' => 3 ];
+        $games[7] = ['team_1' => null, 'team_2' => null, 'round' => 1 ];
+
+        foreach ($games as $game) {
+            $newGame = new Game;
+            $newGame->tournament_id = $this->id;
+            $newGame->team_type = 'App\Models\Tournaments\TournamentTeam';
+            $newGame->home_team_id = $game['team_1']->id ?? null;
+            $newGame->away_team_id = $game['team_2']->id ?? null;
+            $newGame->real_game = true;
+            $newGame->round = $game['round'];
+            $newGame->stage = 'playoff';
+            $newGame->save();
+        }
     }
 
     public function getSchedule()

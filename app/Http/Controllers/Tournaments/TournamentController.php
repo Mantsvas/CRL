@@ -33,14 +33,7 @@ class TournamentController extends Controller
     {
         $activeTab = $request->get('activeTab') ?? Session::pull('activeTab') ?? null;
         if (!$activeTab) {
-            switch ($tournament->stage) {
-                case 'preparation':
-                    $activeTab = 'info';
-                    break;
-                case 'ongoing':
-                    $activeTab = 'leaderboard';
-                    break;
-            }
+            $activeTab = $tournament->setActiveTab();
         }
 
         return view('tournaments.show', [
@@ -53,14 +46,7 @@ class TournamentController extends Controller
     public function show2(Request $request, Tournament $tournament, String $activeTab = null)
     {
         if (!$activeTab) {
-            switch ($tournament->stage) {
-                case 'preparation':
-                    $activeTab = 'info';
-                    break;
-                case 'ongoing':
-                    $activeTab = 'leaderboard';
-                    break;
-            }
+            $activeTab = $tournament->setActiveTab();
         }
 
         return view('tournaments.show', [
@@ -205,6 +191,26 @@ class TournamentController extends Controller
         $tournament->generateSchedule();
 
         $tournament->stage = 'ongoing';
+        $tournament->save();
+
+        return redirect()->route('tournaments.show', $tournament);
+    }
+
+    public function startPlayoff(Tournament $tournament)
+    {
+        Session::put('activeTab', 'playoff');
+        
+        if (!$tournament->canModerate() && !Auth::user()->is_admin) {
+            return redirect()->back()->with('alert-danger', __('messages.You dont have permission to do it!'));
+        }
+
+        if ($tournament->stage != 'ongoing') {
+            return redirect()->back()->with('alert-danger', __('messages.You dont have permission to do it!'));
+        }
+
+        $tournament->setPlayoffTree();
+
+        $tournament->stage = 'playoff';
         $tournament->save();
 
         return redirect()->route('tournaments.show', $tournament);
