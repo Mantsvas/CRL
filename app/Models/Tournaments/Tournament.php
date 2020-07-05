@@ -197,6 +197,7 @@ class Tournament extends Model
         }
 
         $teams = $this->teams
+                        ->sortBy('id')
                         ->sortByDesc(function ($team, $key) {
                             return $team->score - $team->score_against;
                         })

@@ -6,6 +6,9 @@
                 @foreach ($quaterFinals as $game)
                     <ul class="matchup">
                         <li class="team team-top">
+                            @if ($game->winner_id != null && $game->winner_id == $game->home_team_id)
+                                <strong>
+                            @endif
                             {{ $game->homeTeam->title ?? null }}
                             <span class="score">
                                 {{ $game->home_team_score }}
@@ -13,14 +16,24 @@
                                     <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                 @endif
                             </span>
+                            @if ($game->winner_id != null && $game->winner_id == $game->home_team_id)
+                                </strong>
+                            @endif
                         </li>
-                        <li class="team team-bottom">{{ $game->awayTeam->title ?? null }}
+                        <li class="team team-bottom">
+                            @if ($game->winner_id != null && $game->winner_id == $game->away_team_id)
+                                <strong>
+                            @endif
+                            {{ $game->awayTeam->title ?? null }}
                             <span class="score">
                                 {{ $game->away_team_score }}
                                 @if ($tournament->canModerate() && isset($game->home_team_id) && isset($game->away_team_id))
                                     <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                 @endif
                             </span>
+                            @if ($game->winner_id != null && $game->winner_id == $game->away_team_id)
+                                </strong>
+                            @endif
                         </li>
                     </ul>
                 @endforeach                                   
@@ -31,6 +44,9 @@
                 @foreach ($semiFinals as $game)
                     <ul class="matchup">
                         <li class="team team-top">
+                            @if ($game->winner_id != null && $game->winner_id == $game->home_team_id)
+                                <strong>
+                            @endif
                             {{ $game->homeTeam->title ?? null }}
                             <span class="score">
                                 {{ $game->home_team_score }}
@@ -38,8 +54,14 @@
                                     <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                 @endif
                             </span>
+                            @if ($game->winner_id != null && $game->winner_id == $game->home_team_id)
+                                </strong>
+                            @endif
                         </li>
                         <li class="team team-bottom">
+                            @if ($game->winner_id != null && $game->winner_id == $game->away_team_id)
+                                <strong>
+                            @endif
                             {{ $game->awayTeam->title ?? null }}
                             <span class="score">
                                 {{ $game->away_team_score }}
@@ -47,6 +69,9 @@
                                     <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                 @endif
                             </span>
+                            @if ($game->winner_id != null && $game->winner_id == $game->away_team_id)
+                                </strong>
+                            @endif
                         </li>
                     </ul>
                 @endforeach                                     
@@ -60,6 +85,9 @@
                 @foreach ($finals as $game)
                     <ul class="matchup">
                         <li class="team team-top">
+                            @if ($game->winner_id != null && $game->winner_id == $game->home_team_id)
+                                <strong>
+                            @endif
                             {{ $game->homeTeam->title ?? null }}
                             <span class="score">
                                 {{ $game->home_team_score }}
@@ -67,8 +95,14 @@
                                     <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                 @endif
                             </span>
+                            @if ($game->winner_id != null && $game->winner_id == $game->home_team_id)
+                                </strong>
+                            @endif
                         </li>
                         <li class="team team-bottom">
+                            @if ($game->winner_id != null && $game->winner_id == $game->away_team_id)
+                                <strong>
+                            @endif
                             {{ $game->awayTeam->title ?? null }}
                             <span class="score">
                                 {{ $game->away_team_score }}
@@ -76,6 +110,9 @@
                                     <a class="btn btn-flat btn-sm btn-info" href="{{ route('tournaments.gameDetails.edit', $game) }}" ><i class="fa fa-edit"></i></a>
                                 @endif
                             </span>
+                            @if ($game->winner_id != null && $game->winner_id == $game->away_team_id)
+                                </strong>
+                            @endif
                         </li>
                     </ul>
                 @endforeach    
