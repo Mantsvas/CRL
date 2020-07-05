@@ -20,12 +20,12 @@ class TournamentTeam extends Model
 
     public function homeGames()
     {
-        return $this->hasMany('App\Models\Tournaments\Game', 'home_team_id');
+        return $this->hasMany('App\Models\Tournaments\Game', 'home_team_id')->whereIn('stage', ['regular', 'extra']);
     }
 
     public function awayGames()
     {
-        return $this->hasMany('App\Models\Tournaments\Game', 'away_team_id');
+        return $this->hasMany('App\Models\Tournaments\Game', 'away_team_id')->whereIn('stage', ['regular', 'extra']);
     }
 
     public function getWinsAttribute()

@@ -15,7 +15,7 @@ class Tournament extends Model
 
     public function teams()
     {
-        return $this->hasMany('App\Models\Tournaments\TournamentTeam', 'tournament_id')->where('confirmed', true)->with(['homeGames', 'awayGames', ]);
+        return $this->hasMany('App\Models\Tournaments\TournamentTeam', 'tournament_id')->where('confirmed', true)->with(['homeGames', 'awayGames']);
     }
 
     public function applicants()
@@ -197,7 +197,6 @@ class Tournament extends Model
         }
 
         $teams = $this->teams
-                        ->sortBy('id')
                         ->sortByDesc(function ($team, $key) {
                             return $team->score - $team->score_against;
                         })
