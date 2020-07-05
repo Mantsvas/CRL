@@ -200,7 +200,7 @@ class Tournament extends Model
                         ->sortByDesc('extra')
                         ->sortByDesc(function ($team, $key) {
                             $score = $team->score;
-                            if ($team->id == 16 || $team->id == 23) {
+                            if ($team->id == 16 || $team->id == 28) {
                                 $score++;
                             }
                             return $score - $team->score_against;
