@@ -130,7 +130,7 @@ class GameController extends Controller
         $game->save();
 
         if ($game->stage == 'playoff') {
-            $game->setNextPlayoffGame();
+            // $game->setNextPlayoffGame();
         }
         return redirect()->route('tournaments.show', $game->tournament);
     }
