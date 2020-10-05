@@ -26,9 +26,15 @@ class HomeController extends Controller
      */
     public function index(CRApi $api)
     {
-        Artisan::call('UpdateCWResults');
+        $clans = Clan::orderBy('cw_score', 'desc')->get();
+        $now = \Carbon\Carbon::now();
+        $diff = $now->diffInSeconds($clans->first()->updated_at);
+        if ($diff > 10) {
+            Artisan::call('UpdateCWResults');
+            $clans = Clan::orderBy('cw_score', 'desc')->get();
+        }
         return view('welcome', [
-            'clans' => Clan::orderBy('cw_score', 'desc')->get(),
+            'clans' => $clans,
         ]);
     }
 
