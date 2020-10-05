@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clan;
 use Illuminate\Http\Request;
 use App\Services\ClashRoyaleService as CRApi;
 
@@ -22,9 +23,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(CRApi $api)
     {
-        return view('welcome');
+        return view('welcome', [
+            'clans' => Clan::orderBy('cw_score', 'desc')->get(),
+        ]);
     }
 
     public function player(CRApi $api, $tag)

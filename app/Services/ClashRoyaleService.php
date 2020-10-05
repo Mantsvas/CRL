@@ -54,4 +54,19 @@ class ClashRoyaleService
             return 'error';
         }
     }
+
+    public function getCurrentWar($tag)
+    {
+        try {
+            $response = $this->client->get($this->url . '/clans/%23' . strtoupper($tag) . '/currentriverrace', [
+                'headers' => $this->headers
+            ]);
+
+            $response = json_decode($response->getBody()->getContents());
+            
+            return $response;
+        } catch (GuzzleException $e) {
+            return $e;
+        }
+    }
 }

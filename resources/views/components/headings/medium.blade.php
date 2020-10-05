@@ -1,1 +1,0 @@
-<h3 class="{{ $classes }}">{{ $heading }}</h3>

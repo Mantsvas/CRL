@@ -1,1 +1,0 @@
-<x-tournaments.playoff :tournament="$tournament" />
