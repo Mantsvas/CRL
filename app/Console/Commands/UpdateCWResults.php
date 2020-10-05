@@ -39,6 +39,7 @@ class UpdateCWResults extends Command
      */
     public function handle()
     {
+        \Log::debug('START CW');
         $clans = [
             'GP0CL', 'PVUJQL', '209VYQ8U', 'P0GJ8JLU', 'CJP2G', 'UYYL0G', 'GL0GJU', '9900QPUP', 'RVQJPUJ', 'UVV89PL', 'UQ8VVR'
         ];
