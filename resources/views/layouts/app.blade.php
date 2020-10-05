@@ -23,7 +23,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     @yield('styles')
 
-    {{-- <x-google.analytics /> --}}
+    <x-google.analytics />
 </head>
 <body style="background-image: url('http://clashroyale.lt/storage/images/cr-background.jpg'); background-repeat: repeat;">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
