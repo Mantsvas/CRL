@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Clan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use App\Services\ClashRoyaleService as CRApi;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
      */
     public function index(CRApi $api)
     {
+        Artisan::call('UpdateCWResults');
         return view('welcome', [
             'clans' => Clan::orderBy('cw_score', 'desc')->get(),
         ]);
