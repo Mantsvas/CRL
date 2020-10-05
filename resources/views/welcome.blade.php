@@ -3,6 +3,11 @@
 @section('content')
     <div class="row">
         @foreach ($clans as $clan)
+            @if ($loop->index == 6)
+                <div class="col-12">
+                    @include('adsense.top_horizontal')
+                </div>
+            @endif
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
@@ -32,12 +37,6 @@
                     <!-- /.box-body -->
                 </div>
             </div>
-
-            @if ($loop->index == 5)
-                <div class="row">
-                    @include('adsense.top_horizontal')
-                </div>
-            @endif
         @endforeach
     </div>
 @endsection
