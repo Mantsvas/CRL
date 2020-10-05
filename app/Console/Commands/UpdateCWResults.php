@@ -13,7 +13,7 @@ class UpdateCWResults extends Command
      *
      * @var string
      */
-    protected $signature = 'updateCW';
+    protected $signature = 'UpdateCWResults';
 
     /**
      * The console command description.
