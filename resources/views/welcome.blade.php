@@ -4,7 +4,7 @@
     <div class="row">
         @foreach ($clans as $clan)
             @if ($loop->index == 6)
-                <div class="col-12">
+                <div class="col-12 m-3">
                     @include('adsense.top_horizontal')
                 </div>
             @endif
