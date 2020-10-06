@@ -52,7 +52,7 @@ class UpdateCWResults extends Command
                 $clan = new Clan;
             }
 
-            $array = collect($response->clans)->sortByDesc('fame');
+            $array = collect($response->clans)->sortBy('finishTime')->sortByDesc('fame');
             $clan->current_river_race = json_encode($array);
             $clan->tag = $tag;
             $clan->cw_score = $response->clan->clanScore;
