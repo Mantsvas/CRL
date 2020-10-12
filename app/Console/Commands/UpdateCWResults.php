@@ -46,6 +46,7 @@ class UpdateCWResults extends Command
 
         foreach ($clans as $tag) {
             $response = $api->getCurrentWar($tag);
+            $response2 = $api->getClan($tag);
             $clan = Clan::where('tag', $tag)->first();
             if (!$clan) {
                 $clan = new Clan;
@@ -71,7 +72,7 @@ class UpdateCWResults extends Command
 
             $clan->current_river_race = json_encode($array);
             $clan->tag = $tag;
-            $clan->cw_score = $response->clan->clanScore;
+            $clan->cw_score = $response2->clanWarTrophies;
             $clan->title = $response->clan->name;
             $clan->save();
         }
