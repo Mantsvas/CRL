@@ -40,7 +40,7 @@ class UpdateCWResults extends Command
     public function handle()
     {
         $clans = [
-            'GP0CL', 'PVUJQL', '209VYQ8U', 'P0GJ8JLU', 'CJP2G', 'UYYL0G', 'GL0GJU', '9900QPUP', 'RVQJPUJ', 'UVV89PL', 'UQ8VVR'
+            'GP0CL', 'PVUJQL', '209VYQ8U', 'P0GJ8JLU', 'CJP2G', 'UYYL0G', 'GL0GJU', '9900QPUP', 'RVQJPUJ', 'UVV89PL', 'UQ8VVR', '9VQPY2J8', 'VG0P2Y', 'RRVCRL9', '2LRLRVQ', '9PP9Q8YP'
         ];
         $api = new CRApi;
 
