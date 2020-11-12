@@ -22,4 +22,5 @@ Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/clan/{tag}', 'HomeController@clan')->name('clan');
 

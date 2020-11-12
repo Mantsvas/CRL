@@ -27,7 +27,7 @@
                                 @foreach ($clan->river_race as $riverClan) 
                                     <tr style="{{ '#' . $clan->tag == $riverClan->tag ? 'background-color: #ffc107' : ''}}">
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>{{ $riverClan->name }} <br><span style="font-size: 9px">{{ $riverClan->finishTime ? $riverClan->finishTime . ' UTC' : null }}</span></td>
+                                        <td><a style="color: inherit;" href="{{ route('clan', ltrim($riverClan->tag, '#')) }}">{{ $riverClan->name }} <br><span style="font-size: 9px">{{ $riverClan->finishTime ? $riverClan->finishTime . ' UTC' : null }}</span></a></td>
                                         <td style="width: 30%">{{ $riverClan->fame }}</td>
                                     </tr>
                                 @endforeach
