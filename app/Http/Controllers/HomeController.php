@@ -29,10 +29,10 @@ class HomeController extends Controller
         $clans = Clan::orderBy('cw_score', 'desc')->get();
         $now = \Carbon\Carbon::now();
         $diff = $now->diffInSeconds($clans->first()->updated_at);
-        // if ($diff == 600) {
-        //     Artisan::call('UpdateCWResults');
-        //     $clans = Clan::orderBy('cw_score', 'desc')->get();
-        // }
+        if ($diff == 600) {
+            Artisan::call('UpdateCWResults');
+            $clans = Clan::orderBy('cw_score', 'desc')->get();
+        }
         return view('welcome', [
             'clans' => $clans,
         ]);
