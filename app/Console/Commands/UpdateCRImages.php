@@ -38,11 +38,18 @@ class UpdateCRImages extends Command
      */
     public function handle()
     {
-        for ($i = 16000000; $i < 16000180; $i++) {
-            $url = 'https://docs.apiwar.com/ups/uploads/' . $i . '.png';
+        // for ($i = 16000000; $i < 16000180; $i++) {
+        //     $url = 'https://docs.apiwar.com/ups/uploads/' . $i . '.png';
+        //     $content = file_get_contents($url);
+        //     $name = 'images/clan_badges/clan_badge_' . $i . '.png';
+        //     Storage::disk('public')->put($name, $content);
+        // }
+
+        for ($i = 0; $i < 23; $i++) {
+            $url = 'https://docs.apiwar.com/ups/uploads/Arena-' . $i . '.png';
             $content = file_get_contents($url);
-            $name = 'images/clan_badges/clan_badge_' . $i . '.png';
+            $name = 'images/arena_badges/arena_' . (54000000 + $i - 1) . '.png';
             Storage::disk('public')->put($name, $content);
-        }  
+        }
     }
 }

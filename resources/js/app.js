@@ -22,6 +22,7 @@ Vue.component('clan-container', require('./containers/Clan.vue').default);
 
 
 // Components
+Vue.component('icon', require('./components/UI/IconComponent').default);
 Vue.component('clan-info-component', require('./components/clan/InfoComponent').default);
 Vue.component('clan-members-component', require('./components/clan/MembersComponent').default);
 Vue.component('clan-river-race-component', require('./components/clan/RiverRaceComponent').default);

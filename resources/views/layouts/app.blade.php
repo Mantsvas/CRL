@@ -25,7 +25,7 @@
 
     <x-google.analytics />
 </head>
-<body style="background-image: url('http://clashroyale.lt/storage/images/cr-background.jpg'); background-repeat: repeat;">
+<body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
         <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

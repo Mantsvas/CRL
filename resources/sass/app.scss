@@ -37,6 +37,8 @@ h1 {
 }
 
 body {
+    background-image: url('http://clashroyale.lt/storage/images/cr-background.jpg');
+    background-attachment: fixed;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -176,6 +178,20 @@ td.min, th.min {
 .my-bg-blue {
     background-color: blue;
     color: gold;
+}
+
+.clanBadge {
+    max-width: 1.5em;
+}
+
+.active {
+    background-color: gold;
+    color: blue;
+    font-weight: 700;
+}
+
+.no-padding {
+    padding: 0;
 }
 
 @-webkit-keyframes pulse {

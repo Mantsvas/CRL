@@ -15,18 +15,18 @@
                             <h3 class="card-title">  {{ $loop->index + 1 . '. ' . $clan->name . ' (' . $clan->clanWarTrophies .')' }}</h3>
                         </div>
                         <!-- /.box-header -->
-                        <div class="card-body table-responsive">
-                            <table class="table table-bordered table-hover">
+                        <div class="card-body table-responsive no-padding">
+                            <table class="table table-hover table-stripe">
                                 <thead>
-                                </thead>
-                                <tbody>
-                                    <tr>
+                                    <tr class="bg-dark">
                                         <th style="width: 10px">#</th>
                                         <th>Clan</th>
-                                        <th>Fame</th>
+                                        <th class="text-right">Fame</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @foreach (json_decode($clan->currentRiverRace->clans) as $riverClan) 
-                                        <tr style="{{ '#' . $clan->tag == $riverClan->tag ? 'background-color: #ffc107' : ''}}">
+                                        <tr style="{{ '#' . $clan->tag == $riverClan->tag ? 'background-color: lightgrey' : ''}}">
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>
                                                 @if (in_array(ltrim($riverClan->tag, '#'), Cnst::CLAN_TAGS))
@@ -37,7 +37,7 @@
                                                     </a>
                                                 @endif
                                             </td>
-                                            <td style="width: 30%">{{ $riverClan->fame }}</td>
+                                            <td class="text-right">{{ $riverClan->fame }} <icon icon="cw-fame"></icon></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

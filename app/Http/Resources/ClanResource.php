@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Http\Resources\PlayerResource;
+use App\Http\Resources\CurrentRiverRaceResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClanResource extends JsonResource
@@ -28,6 +29,7 @@ class ClanResource extends JsonResource
             'members'            => $this->members,
             'membersList'        => $this->membersList,
             'players'            => PlayerResource::collection($this->players),
+            'currentRiverRace'   => new CurrentRiverRaceResource(json_decode($this->currentRiverRace))
         ];
     }
 }
