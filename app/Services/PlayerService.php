@@ -8,7 +8,7 @@ class PlayerService
 {
     public function updateOrCreate(Object $data)
     {
-        $player = Player::where('tag', $data->tag)->first();
+        $player = Player::where('tag', ltrim($data->tag, '#'))->first();
         if (!$player) {
             $player = new Player();
             $player->tag = ltrim($data->tag, '#');
