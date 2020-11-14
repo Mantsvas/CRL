@@ -29,7 +29,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
                                             {{-- <a style="color: inherit;" href="{{ route('clan', ltrim($riverClan->tag, '#')) }}"> --}}
-                                                {{ $riverClan->name }} <br><span style="font-size: 9px">{{ isset($riverClan->finishTime) ? Hlp::convertUTCDate($riverClan->finishTime) : null }}</span>
+                                                {{ $riverClan->name }} <br><span style="font-size: 9px">{{ isset($riverClan->finishTime) ? $riverClan->finishTime : null }}</span>
                                             {{-- </a> --}}
                                         </td>
                                         <td style="width: 30%">{{ $riverClan->fame }}</td>
