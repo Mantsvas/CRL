@@ -232,6 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Hlp' => App\Helpers::class,
+        'CRApi' => App\Services\ClashRoyaleService::class,
+        'ClanService' => App\Services\ClanService::class,
     ],
 
 ];

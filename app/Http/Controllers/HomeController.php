@@ -32,14 +32,6 @@ class HomeController extends Controller
         ]);
     }
 
-    public function clan(CRApi $api, String $tag)
-    {
-        $api = new CRApi;
-        $data = $api->getClan($tag);
-        dd($data);
-        return view('clan.index', $data);
-    }
-
     public function player(CRApi $api, $tag)
     {
         $api = new CRApi;

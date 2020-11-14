@@ -45,7 +45,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @guest
+                    @if (!Auth::user()) 
                         <li class="nav-item"><a href="{{ route('login.provider', 'google') }}" class="nav-link">{{ __('messages.Google Login') }}</a></li>
                         {{-- <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __('messages.Login') }}</a></li>
                         <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">{{ __('messages.Sign up') }}</a></li> --}}
@@ -78,15 +78,16 @@
         </div>
     </nav>
 
-    <main class="py-4">
-        <div class="container">
-            @yield('content')
-        </div>
-        <div class="container">
-            @include('adsense.top_horizontal')
-        </div>
-
-    </main>
+    <div id="app">
+        <main class="py-4">
+            <div class="container">
+                @yield('content')
+            </div>
+            <div class="container">
+                @include('adsense.top_horizontal')
+            </div>
+        </main>
+    </div>
 
     @yield('script')
 
