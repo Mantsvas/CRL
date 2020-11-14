@@ -39,8 +39,26 @@ class ClanService
         }
 
         $clansScore = collect($data->clans);
+        foreach ($clansScore as $score) {
+            $str = $score->finishTime ?? 1;
+            if ($str !== 1) {
+                $date = $str[0] . $str[1] . $str[2] . $str[3] . '-' . $str[4] . $str[5] . '-' . $str[6] . $str[7] . ' ' . $str[9] . $str[10] . ':' . $str[11] . $str[12] . ':' . $str[13] . $str[14];
+                $score->finishTime = $date;
+            } else {
+                $score->finishTime = 1;
+            }
+        }
 
-        $riverRace->clans = json_encode($clansScore->sortByDesc('fame')->sortBy('finishTime'));
+        $clansScore = $clansScore->sortByDesc('fame')->sortBy('finishTime');
+        foreach ($clansScore as $score) {
+            if ($score->finishTime === 1) {
+                $score->finishTime = null;
+            }
+        }
+
+
+        $riverRace->clans = json_encode($clansScore);
+
         $riverRace->sectionIndex = $data->sectionIndex;
         $riverRace->fame = $data->clan->fame ?? null;
         $riverRace->repairPoints = $data->clan->repairPoints ?? null;
