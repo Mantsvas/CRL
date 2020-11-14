@@ -6,8 +6,8 @@
                 <th :class="sortBy === 'name' ? 'active' : ' '" @click="sortByValue('name')">Name</th>
                 <th :class="['text-right', sortBy === 'trophies' ? 'active' : ' ']" @click="sortByValue('trophies')">Trophies</th>
                 <th :class="['text-right', sortBy === 'bestTrophies' ? 'active' : ' ']" @click="sortByValue('bestTrophies')">PB</th>
-                <th :class="['text-left', sortBy === 'tag' ? 'active' : ' ']" @click="sortByValue('tag')">Tag</th>
-                <th :class="['text-right', sortBy === 'level' ? 'active' : ' ']" @click="sortByValue('level')">Level</th>
+                <th :class="['text-left d-none d-sm-table-cell', sortBy === 'tag' ? 'active' : ' ']" @click="sortByValue('tag')">Tag</th>
+                <th :class="['text-right d-none d-sm-table-cell', sortBy === 'level' ? 'active' : ' ']" @click="sortByValue('level')">Level</th>
             </tr>
         </thead>
         <tbody>
@@ -16,8 +16,8 @@
                 <td >{{ member.name }}</td>
                 <td class="text-right">{{ member.trophies }} <img class="clanBadge" :src="'/storage/images/arena_badges/arena_' + member.arena.id + '.png'"  :title="member.arena.name"/></td>
                 <td class="text-right">{{ member.bestTrophies }}</td>
-                <td class="text-left">#{{ member.tag }}</td>
-                <td class="text-right">{{ member.level }}</td>
+                <td class="text-left d-none d-sm-table-cell">#{{ member.tag }}</td>
+                <td class="text-right d-none d-sm-table-cell">{{ member.level }}</td>
             </tr>
         </tbody>
     </table>

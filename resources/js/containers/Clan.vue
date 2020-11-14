@@ -1,6 +1,6 @@
 <template>
     <div class="row justify-content-center">
-        <div class="col-11 col-md-10 col-lg-8">
+        <div class="col-12 col-md-10 col-lg-8">
             <div class="card">
                 <div class="card-header clan-header">
                     <div class="pull-left">
@@ -72,7 +72,6 @@
             getClan() {
                 axios.get('/api/clan/' + this.tag).then((res) => {
                     this.clan = res.data.data;
-                    console.log(this.clan)
                 });
             },
             changeContent(content) {
