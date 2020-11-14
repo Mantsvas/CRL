@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
 use App\Models\Clan;
-use App\Models\CurrentRiverRace;
 use App\Models\RiverRace;
+use App\Models\CurrentRiverRace;
 
 class ClanService
 {
@@ -53,6 +54,10 @@ class ClanService
         foreach ($clansScore as $score) {
             if ($score->finishTime === '3000') {
                 $score->finishTime = null;
+            } else {
+                $date = Carbon::parse($score->finishTime);
+                $date->addHours(7);
+                $score->finishTime = $date->format('Y-m-d H:i:s');
             }
         }
 
