@@ -16,7 +16,16 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+//  Containers
+Vue.component('clan-container', require('./containers/Clan.vue').default);
+
+
+// Components
+Vue.component('clan-info-component', require('./components/clan/InfoComponent').default);
+Vue.component('clan-members-component', require('./components/clan/MembersComponent').default);
+Vue.component('clan-river-race-component', require('./components/clan/RiverRaceComponent').default);
+Vue.component('clan-river-race-log-component', require('./components/clan/RiverRaceLogComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -12,7 +12,7 @@ class Clan extends Model
 
     public function players()
     {
-        return $this->hasMany(Player::class, 'clan_tag', 'tag');
+        return $this->hasMany(Player::class, 'clan_tag', 'tag')->where('in_clan', true);
     }
 
     public function riverRaces()

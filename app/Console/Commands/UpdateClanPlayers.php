@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use App\Services\ClashRoyaleService as CRApi;
 use App\Services\PlayerService;
 use App\Services\ClanService;
+use App\Models\Player;
 
 class UpdateClanPlayers extends Command
 {
@@ -51,10 +52,14 @@ class UpdateClanPlayers extends Command
         foreach ($clanTags as $tag) {
             $response = $this->api->getClan($tag);
             $this->clanService->updateOrCreate($response);
+            $playerTags = [];
             foreach ($response->memberList as $member) {
                 $playerData = $this->api->getPlayer(ltrim($member->tag, '#'));
                 $this->playerService->updateOrCreate($playerData);
+                $playerTags[] = ltrim($member->tag, '#');
             }
+
+            Player::whereNotIn('tag', $playerTags)->where('clan_tag', $tag)->update(['in_clan' => false]);
         }
     }
 }

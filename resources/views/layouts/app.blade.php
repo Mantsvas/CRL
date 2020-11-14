@@ -80,13 +80,11 @@
 
     <div id="app">
         <main class="py-4">
-            <div class="container">
-                @yield('content')
-            </div>
-            <div class="container">
-                @include('adsense.top_horizontal')
-            </div>
+            @yield('content')
         </main>
+    </div>
+    <div class="container">
+        @include('adsense.top_horizontal')
     </div>
 
     @yield('script')

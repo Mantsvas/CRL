@@ -39,6 +39,7 @@ class PlayerService
         $player->achievements = json_encode($data->achievements ?? []);
         $player->currentDeck = json_encode($data->currentDeck ?? []);
         $player->currentFavouriteCard = json_encode($data->currentFavouriteCard ?? []);
+        $player->in_clan = true;
         $player->save();
     }
 }

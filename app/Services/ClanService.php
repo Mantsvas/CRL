@@ -29,6 +29,8 @@ class ClanService
         $clan->members = $data->members;
         $clan->memberList = json_encode($data->memberList);
         $clan->save();
+
+        
     }
 
     public function updateCurrentRiverRace($data)
