@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clan;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Constants\Constants as Cnst;
 use App\Services\ClashRoyaleService as CRApi;
 
 class HomeController extends Controller
@@ -24,12 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(CRApi $api)
+    public function index()
     {
-        $clans = Clan::orderBy('cw_score', 'desc')->get();
-        $now = \Carbon\Carbon::now();
-        $diff = $now->diffInSeconds($clans->first()->updated_at);
-
+        $clans = Clan::whereIn('tag', Cnst::CLAN_TAGS)->with(['players', 'riverRaces', 'currentRiverRace', 'location'])->orderBy('clanWarTrophies', 'desc')->get();
+        
         return view('welcome', [
             'clans' => $clans,
         ]);
@@ -47,7 +44,7 @@ class HomeController extends Controller
     {
         $api = new CRApi;
         $data = $api->getPlayer($tag);
-        dd($data->name);
         dd($data);
+        return view('player.index');
     }
 }

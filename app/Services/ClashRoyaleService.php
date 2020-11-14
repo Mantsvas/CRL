@@ -55,7 +55,7 @@ class ClashRoyaleService
         }
     }
 
-    public function getCurrentWar($tag)
+    public function getCurrentRiverRace($tag)
     {
         try {
             $response = $this->client->get($this->url . '/clans/%23' . strtoupper($tag) . '/currentriverrace', [
@@ -63,7 +63,37 @@ class ClashRoyaleService
             ]);
 
             $response = json_decode($response->getBody()->getContents());
-            
+
+            return $response;
+        } catch (GuzzleException $e) {
+            return $e;
+        }
+    }
+
+    public function getRiverRaceLog($tag)
+    {
+        try {
+            $response = $this->client->get($this->url . '/clans/%23' . strtoupper($tag) . '/riverracelog', [
+                'headers' => $this->headers
+            ]);
+
+            $response = json_decode($response->getBody()->getContents());
+
+            return $response;
+        } catch (GuzzleException $e) {
+            return $e;
+        }
+    }
+
+    public function getLocations()
+    {
+        try {
+            $response = $this->client->get($this->url . '/locations', [
+                'headers' => $this->headers
+            ]);
+
+            $response = json_decode($response->getBody()->getContents());
+
             return $response;
         } catch (GuzzleException $e) {
             return $e;

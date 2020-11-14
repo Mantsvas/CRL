@@ -10,8 +10,24 @@ class Clan extends Model
         'title', 'tag', 'follow'
     ];
 
-    public function getRiverRaceAttribute()
+    public function players()
     {
-        return json_decode($this->current_river_race);
+        return $this->hasMany(Player::class, 'clan_tag', 'tag');
     }
+
+    public function riverRaces()
+    {
+        return $this->belongsToMany(RiverRace::class, 'clan_river_race', 'clan_tag', 'river_race_id', 'tag', 'id');
+    }
+
+    public function currentRiverRace()
+    {
+        return $this->hasOne(CurrentRiverRace::class, 'clan_tag', 'tag');
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
 }

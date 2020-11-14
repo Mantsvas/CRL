@@ -16,10 +16,17 @@ class CreateClansTable extends Migration
         Schema::create('clans', function (Blueprint $table) {
             $table->id();
             $table->string('tag');
-            $table->string('title')->nullable();
-            $table->boolean('follow')->default(false);
-            $table->integer('cw_score')->nullable();
-            $table->text('current_river_race')->nullable();
+            $table->integer('location_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('badgeId')->nullable();
+            $table->integer('clanScore')->nullable();
+            $table->integer('clanWarTrophies')->nullable();
+            $table->integer('requiredTrophies')->nullable();
+            $table->integer('donationsPerWeek')->nullable();
+            $table->integer('members')->nullable();
+            $table->json('memberList')->nullable();
             $table->timestamps();
         });
     }

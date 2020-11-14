@@ -11,7 +11,7 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">  {{ $loop->index + 1 . '. ' . $clan->title . ' (' . $clan->cw_score .')' }}</h3>
+                        <h3 class="card-title">  {{ $loop->index + 1 . '. ' . $clan->name . ' (' . $clan->clanWarTrophies .')' }}</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="card-body table-responsive">
@@ -24,12 +24,12 @@
                                     <th>Clan</th>
                                     <th>Fame</th>
                                 </tr>
-                                @foreach ($clan->river_race as $riverClan) 
+                                @foreach (json_decode($clan->currentRiverRace->clans) as $riverClan) 
                                     <tr style="{{ '#' . $clan->tag == $riverClan->tag ? 'background-color: #ffc107' : ''}}">
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
                                             {{-- <a style="color: inherit;" href="{{ route('clan', ltrim($riverClan->tag, '#')) }}"> --}}
-                                                {{ $riverClan->name }} <br><span style="font-size: 9px">{{ $riverClan->finishTime ? $riverClan->finishTime . ' UTC' : null }}</span>
+                                                {{ $riverClan->name }} <br><span style="font-size: 9px">{{ isset($riverClan->finishTime) ? Hlp::convertUTCDate($riverClan->finishTime) : null }}</span>
                                             {{-- </a> --}}
                                         </td>
                                         <td style="width: 30%">{{ $riverClan->fame }}</td>

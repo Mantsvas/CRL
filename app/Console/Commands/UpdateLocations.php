@@ -2,24 +2,20 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Clan;
 use Illuminate\Console\Command;
-use App\Http\Constants\Constants as Cnst;
-use App\Models\CurrentRiverRace;
-use App\Services\ClanService;
 use App\Services\ClashRoyaleService as CRApi;
+use App\Services\LocationService;
 
-class UpdateCWResults extends Command
+class UpdateLocations extends Command
 {
     private $api;
-    private $clanService;
-
+    private $locationService;
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'UpdateCWResults';
+    protected $signature = 'UpdateLocations';
 
     /**
      * The console command description.
@@ -33,11 +29,11 @@ class UpdateCWResults extends Command
      *
      * @return void
      */
-    public function __construct(CRApi $api, ClanService $clanService)
+    public function __construct(CRApi $api, LocationService $locationService)
     {
         parent::__construct();
         $this->api = $api;
-        $this->clanService = $clanService;
+        $this->locationService = $locationService;
     }
 
     /**
@@ -47,11 +43,10 @@ class UpdateCWResults extends Command
      */
     public function handle()
     {
-        $clans = Cnst::CLAN_TAGS;
+        $locations = $this->api->getLocations();
 
-        foreach ($clans as $tag) {
-            $data = $this->api->getCurrentRiverRace($tag);
-            $this->clanService->updateCurrentRiverRace($data);
+        foreach ($locations->items as $location) {
+            $this->locationService->updateOrCreate($location);
         }
     }
 }
