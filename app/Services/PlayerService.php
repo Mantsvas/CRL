@@ -18,13 +18,14 @@ class PlayerService
         $player->save();
     }
 
-    public function quickPlayerUpdate($data, Player $player = null)
+    public function quickPlayerUpdate($data, $clanTag, Player $player = null)
     {
         if (!$player) {
             $player = new Player();
             $player->tag = ltrim($data->tag, '#');
         }
 
+        $player->clan_tag = $clanTag;
         $player->setBasicData($data);
         $player->save();
     }

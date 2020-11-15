@@ -43,7 +43,7 @@ class ClanService
         $playerTags = [];
         foreach ($members as $member) {
             $playerTags[] = ltrim($member->tag, '#');
-            $this->playerService->quickPlayerUpdate($member, $existingPlayers->where('tag', ltrim($member->tag, '#'))->first());
+            $this->playerService->quickPlayerUpdate($member, $clanTag, $existingPlayers->where('tag', ltrim($member->tag, '#'))->first());
         }
 
         Player::whereNotIn('tag', $playerTags)->where('clan_tag', ltrim($clanTag, '#'))->update(['in_clan' => false]);
