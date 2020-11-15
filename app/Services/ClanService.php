@@ -13,7 +13,7 @@ class ClanService
 {
     private $playerService;
 
-    public function __construcy(PlayerService $playerService) {
+    public function __construct(PlayerService $playerService) {
         $this->playerService = $playerService;
     }
     
