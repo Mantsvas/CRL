@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(UpdateCWResults::class)->everyTenMinutes();
-        $schedule->command(UpdateClans::class)->everyThirtyMinutes();
+        $schedule->command(UpdateClans::class)->everyTenMinutes();
         $schedule->command(UpdatePlayers::class)->twiceDaily(10, 22);
         $schedule->command(UpdateRiverRaceLog::class)->weeklyOn(1, '13:00');
         $schedule->command(UpateLocations::class)->quarterly();
