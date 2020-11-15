@@ -19,6 +19,11 @@ class Player extends Model
         return $this->belongsTo(Clan::class, 'clan_tag', 'tag');
     }
 
+    public function cards()
+    {
+        return $this->hasMany(PlayerCard::class, 'player_tag', 'tag');
+    }
+
     public function setBasicData($data)
     {
         $this->name = $data->name;

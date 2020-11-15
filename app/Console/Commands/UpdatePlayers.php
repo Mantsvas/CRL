@@ -43,11 +43,13 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
-        $players = Player::get();
+        $players = Player::with('cards')->get();
         foreach ($players as $player) {
             $data = $this->api->getPlayer($player->tag);
             $this->playerService->createOrUpdate($data, $player);
+            if ($data->expLevel > 11) {
+                $this->playerService->updateCards($player, $data->cards);
+            }
         }
-        
     }
 }

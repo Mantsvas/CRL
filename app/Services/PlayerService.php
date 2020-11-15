@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Player;
+use App\Models\PlayerCard;
 
 class PlayerService 
 {
@@ -28,5 +29,26 @@ class PlayerService
         $player->clan_tag = $clanTag;
         $player->setBasicData($data);
         $player->save();
+    }
+
+    public function updateCards(Player $player, $cards)
+    {
+        $playerCards = $player->cards;
+        foreach ($cards as $card) {
+            $playerCard = $playerCards->where('card_id', $card->id)->first();
+            if (!$playerCard) {
+                $playerCard = new PlayerCard;
+                $playerCard->card_id = $card->id;
+                $playerCard->player_tag = ltrim($player->tag, '#');
+            }
+
+            $playerCard->name = $card->name;
+            $playerCard->level = $card->level;
+            $playerCard->maxLevel = $card->maxLevel;
+            $playerCard->starLevel = $card->starLevel ?? null;
+            $playerCard->count = $card->count;
+            $playerCard->setCollectedAmounts();
+            $playerCard->save();
+        }
     }
 }
