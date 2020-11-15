@@ -4,6 +4,11 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use App\Console\Commands\UpdateCWResults;
+use App\Console\Commands\UpdateClans;
+use App\Console\Commands\UpdateRiverRaceLog;
+use App\Console\Commands\UpateLocations;
+use App\Console\Commands\UpdateCards;
+
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -25,11 +30,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
         $schedule->command(UpdateCWResults::class)->everyTenMinutes();
-        $schedule->command(UpdateClanPlayers::class)->twiceDaily(10, 22);
+        $schedule->command(UpdateClans::class)->everyThirtyMinutes();
+        $schedule->command(UpdatePlayers::class)->twiceDaily(10, 22);
         $schedule->command(UpdateRiverRaceLog::class)->weeklyOn(1, '13:00');
         $schedule->command(UpateLocations::class)->quarterly();
+        $schedule->command(UpateCards::class)->weekly();
     }
 
     /**

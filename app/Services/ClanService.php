@@ -6,9 +6,17 @@ use Carbon\Carbon;
 use App\Models\Clan;
 use App\Models\RiverRace;
 use App\Models\CurrentRiverRace;
+use App\Services\PlayerService;
+use App\Models\Player;
 
 class ClanService
 {
+    private $playerService;
+
+    public function __construcy(PlayerService $playerService) {
+        $this->playerService = $playerService;
+    }
+    
     public function createOrUpdate(Object $data, Clan $clan = null)
     {
         if (!$clan) {
@@ -28,6 +36,17 @@ class ClanService
         $clan->members = $data->members;
         $clan->memberList = json_encode($data->memberList);
         $clan->save();
+    }
+
+    public function updateMembers($members, $existingPlayers, $clanTag)
+    {
+        $playerTags = [];
+        foreach ($members as $member) {
+            $playerTags[] = ltrim($member->tag, '#');
+            $this->playerService->quickPlayerUpdate($member, $existingPlayers->where('tag', ltrim($member->tag, '#'))->first());
+        }
+
+        Player::whereNotIn('tag', $playerTags)->where('clan_tag', ltrim($clanTag, '#'))->update(['in_clan' => false]);
     }
 
     public function updateCurrentRiverRace($data, CurrentRiverRace $riverRace = null)

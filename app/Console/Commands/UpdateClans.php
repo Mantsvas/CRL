@@ -10,14 +10,14 @@ use App\Services\ClanService;
 use App\Models\Player;
 use App\Models\Clan;
 
-class UpdateClanPlayers extends Command
+class UpdateClans extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'UpdateClanPlayers';
+    protected $signature = 'UpdateClans';
 
     /**
      * The console command description.
@@ -34,12 +34,13 @@ class UpdateClanPlayers extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CRApi $api, PlayerService $playerService, ClanService $clanService)
     {
+        \Log::info('UPDATECLANS');
         parent::__construct();
-        $this->api = new CRApi;
-        $this->playerService = new PlayerService;
-        $this->clanService = new clanService;
+        $this->api = $api;
+        $this->playerService = $playerService;
+        $this->clanService = $clanService;
     }
 
     /**
@@ -56,18 +57,7 @@ class UpdateClanPlayers extends Command
             $existingClan = $clans->where('tag', $tag)->first();
             $response = $this->api->getClan($tag);
             $this->clanService->createOrUpdate($response, $existingClan);
-
-            // Update Clan players
-            $playerTags = [];
-            $existingPlayers = $existingClan->allPlayers;
-            foreach ($response->memberList as $member) {
-                $playerData = $this->api->getPlayer(ltrim($member->tag, '#'));
-                $existingPlayer = $existingPlayers->where('tag', ltrim($member->tag, '#'))->first();
-                $this->playerService->createOrUpdate($playerData, $existingPlayer);
-                $playerTags[] = ltrim($member->tag, '#');
-            }
-
-            Player::whereNotIn('tag', $playerTags)->where('clan_tag', $tag)->update(['in_clan' => false]);
+            $this->clanService->updateMembers($response->memberList, $existingClan->allPlayers, $tag);
         }
     }
 }
