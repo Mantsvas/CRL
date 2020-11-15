@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Artisan::call('UpdateClanPlayers');
         $clans = Clan::whereIn('tag', Cnst::CLAN_TAGS)->with(['players', 'riverRaces', 'currentRiverRace', 'location'])->orderBy('clanWarTrophies', 'desc')->get();
         
         return view('welcome', [
