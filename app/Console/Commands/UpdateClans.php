@@ -36,7 +36,6 @@ class UpdateClans extends Command
      */
     public function __construct(CRApi $api, PlayerService $playerService, ClanService $clanService)
     {
-        \Log::info('UPDATECLANS');
         parent::__construct();
         $this->api = $api;
         $this->playerService = $playerService;
@@ -50,6 +49,7 @@ class UpdateClans extends Command
      */
     public function handle()
     {
+        \Log::info('UPDATECLANS');
         $clanTags = Cnst::CLAN_TAGS;
         $clans = Clan::whereIn('tag', $clanTags)->with('players')->get();
         foreach ($clanTags as $tag) {
