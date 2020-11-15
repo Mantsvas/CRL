@@ -27,9 +27,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command(UpdateCWResults::class)->everyTenMinutes();
-        $schedule->command(UpdateClanPlayers::class)->twiceDaily(10, 22)->timezone('Europe/Vilnius');
-        $schedule->command(UpdateRiverRaceLog::class)->weeklyOn(1, '13:00')->timezone('Europe/Vilnius');
-        $schedule->command(UpateLocations::class)->quarterly()->timezone('Europe/Vilnius');
+        $schedule->command(UpdateClanPlayers::class)->twiceDaily(10, 22);
+        $schedule->command(UpdateRiverRaceLog::class)->weeklyOn(1, '13:00');
+        $schedule->command(UpateLocations::class)->quarterly();
     }
 
     /**
