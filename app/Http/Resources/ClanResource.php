@@ -29,7 +29,7 @@ class ClanResource extends JsonResource
             'members'            => $this->members,
             'membersList'        => $this->membersList,
             'players'            => PlayerResource::collection($this->players),
-            'currentRiverRace'   => new CurrentRiverRaceResource(json_decode($this->currentRiverRace))
+            'currentRiverRace'   => new CurrentRiverRaceResource(json_decode($this->currentRiverRace)),
         ];
     }
 }

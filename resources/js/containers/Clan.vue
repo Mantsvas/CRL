@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pull-right border-bottom">
+                <div class="border-bottom">
                     <div v-for="navItem in navItems" :class="['card-nav-item', navItem.key === content ? 'active' : ' ']" :key="navItem.key" @click="changeContent(navItem.key)">{{ navItem.text }}</div>
                 </div>
                 
@@ -60,7 +60,7 @@
                     // { 'key': 'info', 'text': 'Info' },
                     { 'key': 'members', 'text': 'Members' },
                     { 'key': 'riverRace', 'text': 'River Race' },
-                    // { 'key': 'riverRaceLog', 'text': 'War Log' },
+                    // { 'key': 'cardinfo', 'text': 'Cards' },
                 ],
                 'content' : 'members',
             };

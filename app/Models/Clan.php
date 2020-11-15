@@ -17,7 +17,7 @@ class Clan extends Model
     
     public function players()
     {
-        return $this->hasMany(Player::class, 'clan_tag', 'tag')->where('in_clan', true);
+        return $this->hasMany(Player::class, 'clan_tag', 'tag')->where('in_clan', true)->with('cards');
     }
 
     public function riverRaces()
