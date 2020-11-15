@@ -38,12 +38,12 @@ class ClanService
         $clan->save();
     }
 
-    public function updateMembers($members, $existingPlayers, $clanTag)
+    public function updateMembers($members, $players, $clanTag)
     {
         $playerTags = [];
         foreach ($members as $member) {
             $playerTags[] = ltrim($member->tag, '#');
-            $this->playerService->quickPlayerUpdate($member, $clanTag, $existingPlayers->where('tag', ltrim($member->tag, '#'))->first());
+            $this->playerService->quickPlayerUpdate($member, $clanTag, $players->where('tag', ltrim($member->tag, '#'))->first());
         }
 
         Player::whereNotIn('tag', $playerTags)->where('clan_tag', ltrim($clanTag, '#'))->update(['in_clan' => false]);

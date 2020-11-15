@@ -54,6 +54,7 @@ class UpdateClans extends Command
             'locationId' => 57000138,
             'minScore'   => 40000,
         ]);
+        $players = Player::get();
         foreach ($response->items as $clan) {
             $clanTags[] = ltrim($clan->tag, '#');
         }
@@ -64,7 +65,7 @@ class UpdateClans extends Command
             $existingClan = $clans->where('tag', $tag)->first();
             $response = $this->api->getClan($tag);
             $this->clanService->createOrUpdate($response, $existingClan);
-            $this->clanService->updateMembers($response->memberList, $existingClan->allPlayers ?? collect(new Player), $tag);
+            $this->clanService->updateMembers($response->memberList, $players, $tag);
         }
     }
 }
