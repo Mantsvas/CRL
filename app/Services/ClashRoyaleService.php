@@ -99,4 +99,19 @@ class ClashRoyaleService
             return $e;
         }
     }
+
+    public function getCards()
+    {
+        try {
+            $response = $this->client->get($this->url . '/cards', [
+                'headers' => $this->headers
+            ]);
+
+            $response = json_decode($response->getBody()->getContents());
+
+            return $response;
+        } catch (GuzzleException $e) {
+            return $e;
+        }
+    }
 }

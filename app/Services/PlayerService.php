@@ -6,14 +6,13 @@ use App\Models\Player;
 
 class PlayerService 
 {
-    public function updateOrCreate(Object $data)
+    public function createOrUpdate(Object $data, Player $player = null)
     {
-        $player = Player::where('tag', ltrim($data->tag, '#'))->first();
         if (!$player) {
             $player = new Player();
             $player->tag = ltrim($data->tag, '#');
         }
-
+        
         $player->name = $data->name;
         $player->clan_tag = ltrim($data->clan->tag, '#') ?? null;
         $player->level = $data->expLevel ?? null;

@@ -48,7 +48,7 @@ class UpdateCWResults extends Command
     public function handle()
     {
         $clans = Cnst::CLAN_TAGS;
-
+        $riverRaces = CurrentRiverRace::whereIn('clan_tag', $clans)->get();
         foreach ($clans as $tag) {
             $data = $this->api->getCurrentRiverRace($tag);
             $this->clanService->updateCurrentRiverRace($data);

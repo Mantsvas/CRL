@@ -10,6 +10,11 @@ class Clan extends Model
         'title', 'tag', 'follow'
     ];
 
+    public function allPlayers()
+    {
+        return $this->hasMany(Player::class, 'clan_tag', 'tag');
+    }
+    
     public function players()
     {
         return $this->hasMany(Player::class, 'clan_tag', 'tag')->where('in_clan', true);

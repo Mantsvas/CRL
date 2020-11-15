@@ -8,6 +8,7 @@ use App\Services\ClashRoyaleService as CRApi;
 use App\Services\PlayerService;
 use App\Services\ClanService;
 use App\Models\Player;
+use App\Models\Clan;
 
 class UpdateClanPlayers extends Command
 {
@@ -49,13 +50,20 @@ class UpdateClanPlayers extends Command
     public function handle()
     {
         $clanTags = Cnst::CLAN_TAGS;
+        $clans = Clan::whereIn('tag', $clanTags)->with('players')->get();
         foreach ($clanTags as $tag) {
+            // Update Clan
+            $existingClan = $clans->where('tag', $tag)->first();
             $response = $this->api->getClan($tag);
-            $this->clanService->updateOrCreate($response);
+            $this->clanService->createOrUpdate($response, $existingClan);
+
+            // Update Clan players
             $playerTags = [];
+            $existingPlayers = $existingClan->allPlayers;
             foreach ($response->memberList as $member) {
                 $playerData = $this->api->getPlayer(ltrim($member->tag, '#'));
-                $this->playerService->updateOrCreate($playerData);
+                $existingPlayer = $existingPlayers->where('tag', ltrim($member->tag, '#'))->first();
+                $this->playerService->createOrUpdate($playerData, $existingPlayer);
                 $playerTags[] = ltrim($member->tag, '#');
             }
 

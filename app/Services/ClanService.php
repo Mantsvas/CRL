@@ -9,9 +9,8 @@ use App\Models\CurrentRiverRace;
 
 class ClanService
 {
-    public function updateOrCreate(Object $data)
+    public function createOrUpdate(Object $data, Clan $clan = null)
     {
-        $clan = Clan::where('tag', ltrim($data->tag, '#'))->first();
         if (!$clan) {
             $clan = new Clan;
             $clan->tag = ltrim($data->tag, '#');
@@ -29,13 +28,10 @@ class ClanService
         $clan->members = $data->members;
         $clan->memberList = json_encode($data->memberList);
         $clan->save();
-
-        
     }
 
-    public function updateCurrentRiverRace($data)
+    public function updateCurrentRiverRace($data, CurrentRiverRace $riverRace = null)
     {
-        $riverRace = CurrentRiverRace::where('clan_tag', ltrim($data->clan->tag, '#'))->first();
         if (!$riverRace) {
             $riverRace = new CurrentRiverRace;
             $riverRace->clan_tag = ltrim($data->clan->tag, '#');
