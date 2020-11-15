@@ -43,7 +43,7 @@ class UpdatePlayers extends Command
      */
     public function handle()
     {
-        $players = Player::where('clan_tag', 'UYYL0G')->with('cards')->get();
+        $players = Player::where('bestTrophies', null)->with('cards')->get();
         foreach ($players as $player) {
             $data = $this->api->getPlayer($player->tag);
             $this->playerService->createOrUpdate($data, $player);
