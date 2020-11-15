@@ -61,10 +61,10 @@ class UpdateClans extends Command
         $clans = Clan::whereIn('tag', $clanTags)->with('players')->get();
         foreach ($clanTags as $tag) {
             // Update Clan
-            $existingClan = $clans->where('tag', $tag)->first() ?? collect(new Clan);
+            $existingClan = $clans->where('tag', $tag)->first();
             $response = $this->api->getClan($tag);
             $this->clanService->createOrUpdate($response, $existingClan);
-            $this->clanService->updateMembers($response->memberList, $existingClan->allPlayers, $tag);
+            $this->clanService->updateMembers($response->memberList, $existingClan->allPlayers ?? collect(new Player), $tag);
         }
     }
 }
