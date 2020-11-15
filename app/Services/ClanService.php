@@ -75,7 +75,7 @@ class ClanService
     {
         $riverRace = RiverRace::where(['seasonId' => $data->seasonId, 'sectionIndex' => $data->sectionIndex])
                         ->where('clan_tags', 'like', '%' . ltrim($data->standings[0]->clan->tag, '#') . '%')
-                        ->first();        
+                        ->first();
         if (!$riverRace) {
             $clanTags = '';
             foreach ($data->standings as $standing) {

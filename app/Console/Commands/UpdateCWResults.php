@@ -52,7 +52,8 @@ class UpdateCWResults extends Command
         $riverRaces = CurrentRiverRace::whereIn('clan_tag', $clans)->get();
         foreach ($clans as $tag) {
             $data = $this->api->getCurrentRiverRace($tag);
-            $this->clanService->updateCurrentRiverRace($data);
+            $existingRiverRace = $riverRaces->where('clan_tag', $tag)->first();
+            $this->clanService->updateCurrentRiverRace($data, $existingRiverRace);
         }
     }
 }
