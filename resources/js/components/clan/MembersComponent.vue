@@ -18,7 +18,7 @@
             <tr v-for="(member, index) in sortedMembers" :key="member.tag">
                 <td>{{ index + 1 }}. {{ member.name }}</td>
                 <td class="text-right">{{ member.trophies }} <img class="clanBadge" :src="'/storage/images/arena_badges/arena_' + member.arena.id + '.png'"  :title="member.arena.name"/></td>
-                <td class="text-right">{{ member.bestTrophies }}</td>
+                <td class="text-right">{{ member.bestTrophies }} <icon icon="trophy" /></td>
                 <td class="text-left d-none d-sm-table-cell">#{{ member.tag }}</td>
                 <td class="text-right d-none d-sm-table-cell">{{ member.level }}</td>
             </tr>
