@@ -114,4 +114,23 @@ class ClashRoyaleService
             return $e;
         }
     }
+
+    public function searchClans($options)
+    {
+        $url = $this->url . '/clans?';
+        foreach ($options as $key => $val) {
+            $url .= $key . '=' . $val . '&';
+        }
+
+        try {
+            $response = $this->client->get($url, [
+                'headers' => $this->headers
+            ]);
+
+            $response = json_decode($response->getBody()->getContents());
+            return $response;
+        } catch (GuzzleException $e) {
+            return $e;
+        }
+    }
 }

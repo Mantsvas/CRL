@@ -49,8 +49,15 @@ class UpdateClans extends Command
      */
     public function handle()
     {
-        \Log::info('UPDATECLANS');
-        $clanTags = Cnst::CLAN_TAGS;
+        $clanTags = [];
+        $response = $this->api->searchClans([
+            'locationId' => 57000138,
+            'minScore'   => 40000,
+        ]);
+        foreach ($response->items as $clan) {
+            $clanTags[] = ltrim($clan->tag, '#');
+        }
+        // $clanTags = Cnst::CLAN_TAGS;
         $clans = Clan::whereIn('tag', $clanTags)->with('players')->get();
         foreach ($clanTags as $tag) {
             // Update Clan

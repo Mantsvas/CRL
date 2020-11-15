@@ -47,7 +47,6 @@ class UpdateCWResults extends Command
      */
     public function handle()
     {
-        \Log::info('UPDATE CW');
         $clans = Cnst::CLAN_TAGS;
         $riverRaces = CurrentRiverRace::whereIn('clan_tag', $clans)->get();
         foreach ($clans as $tag) {
