@@ -38,7 +38,7 @@ class Player extends Model
 
     public function setAdvanceData($data)
     {
-        $this->clan_tag = ltrim($data->clan->tag, '#') ?? null;
+        $this->clan_tag = ltrim($data->clan_tag, '#') ?? null;
         $this->bestTrophies = $data->bestTrophies ?? null;
         $this->wins = $data->wins ?? null;
         $this->losses = $data->losses ?? null;
