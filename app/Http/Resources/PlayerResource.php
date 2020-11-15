@@ -14,11 +14,11 @@ class PlayerResource extends JsonResource
      */
     public function toArray($request)
     {
-        $legendaryCollected = number_format($this->cards->where('maxLevel', 5)->sum('collected_total') / 612 * 100);
-        $epicCollected = number_format($this->cards->where('maxLevel', 8)->sum('collected_total') / 10808 * 100);
-        $rareCollected = number_format($this->cards->where('maxLevel', 11)->sum('collected_total') / 72408 * 100);
-        $commonCollected = number_format($this->cards->where('maxLevel', 13)->sum('collected_total') / 268408 * 100);
-        $goldProgress = number_format($this->cards->sum('spent') / 18532500 * 100);
+        $legendaryCollected = round($this->cards->where('maxLevel', 5)->sum('collected_total') / 612 * 100);
+        $epicCollected = round($this->cards->where('maxLevel', 8)->sum('collected_total') / 10808 * 100);
+        $rareCollected = round($this->cards->where('maxLevel', 11)->sum('collected_total') / 72408 * 100);
+        $commonCollected = round($this->cards->where('maxLevel', 13)->sum('collected_total') / 268408 * 100);
+        $goldProgress = round($this->cards->sum('spent') / 18532500 * 100);
 
         return [
             'tag'                       => $this->tag,
