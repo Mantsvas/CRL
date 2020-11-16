@@ -30,9 +30,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command(UpdateCWResults::class)->everyTenMinutes();
-        // $schedule->command(UpdateClans::class)->everyTenMinutes();
-        $schedule->command(UpdatePlayers::class)->weeklyOn(1, '12:00')->timezone('Europe/Vilnius');
+        $schedule->command(UpdateCWResults::class)->everyTenMinutes();
+        $schedule->command(UpdateClans::class)->everyTenMinutes();
+        // $schedule->command(UpdatePlayers::class)->weeklyOn(1, '12:00')->timezone('Europe/Vilnius');
         $schedule->command(UpdateRiverRaceLog::class)->weeklyOn(1, '13:00');
         $schedule->command(UpateLocations::class)->quarterly();
         $schedule->command(UpateCards::class)->weekly();
