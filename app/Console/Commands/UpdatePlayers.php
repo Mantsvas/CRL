@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Cnst;
 use App\Models\Player;
 use App\Services\ClashRoyaleService as CRApi;
 use App\Services\PlayerService;
