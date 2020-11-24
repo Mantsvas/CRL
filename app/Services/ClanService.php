@@ -73,7 +73,7 @@ class ClanService
                 $score->finishTime = null;
             } else {
                 $date = Carbon::parse($score->finishTime);
-                $date->addHours(7);
+                $date->addHours(2);
                 $score->finishTime = $date->format('Y-m-d H:i:s');
             }
         }
