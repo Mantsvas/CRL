@@ -65,7 +65,7 @@ class UpdateClans extends Command
             $existingClan = $clans->where('tag', $tag)->first();
             $response = $this->api->getClan($tag);
             $this->clanService->createOrUpdate($response, $existingClan);
-            $this->clanService->updateMembers($response->memberList, $players, $tag);
+            // $this->clanService->updateMembers($response->memberList, $players, $tag);
         }
     }
 }
