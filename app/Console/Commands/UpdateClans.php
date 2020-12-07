@@ -59,7 +59,7 @@ class UpdateClans extends Command
         //     $clanTags[] = ltrim($clan->tag, '#');
         // }
         $clanTags = Cnst::CLAN_TAGS;
-        $clans = Clan::whereIn('tag', $clanTags)->with('players')->get();
+        $clans = Clan::whereIn('tag', $clanTags)->get();
         foreach ($clanTags as $tag) {
             // Update Clan
             $existingClan = $clans->where('tag', $tag)->first();
