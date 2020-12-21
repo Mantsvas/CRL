@@ -34,8 +34,8 @@ class Kernel extends ConsoleKernel
         $schedule->command(UpdateClans::class)->hourly();
         // $schedule->command(UpdatePlayers::class)->weeklyOn(1, '12:00')->timezone('Europe/Vilnius');
         $schedule->command(UpdateRiverRaceLog::class)->weeklyOn(1, '13:00');
-        $schedule->command(UpateLocations::class)->quarterly();
-        $schedule->command(UpateCards::class)->weekly();
+        // $schedule->command(UpateLocations::class)->quarterly();
+        // $schedule->command(UpateCards::class)->weekly();
     }
 
     /**
