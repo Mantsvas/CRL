@@ -18,6 +18,7 @@ class Constants {
         'VG0P2Y', // Lietuva LT2
         'RRVCRL9', // Centas
         '9PP9Q8YP', // LTU
+        '2RQQL98Q', // #LTURoyale
         '28LJYCR', // GF SAVI
         'GVUYPYC', // LTeSports
         '2P989LJ', // Lietuva
