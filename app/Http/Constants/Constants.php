@@ -17,7 +17,6 @@ class Constants {
         '9VQPY2J8', // WeAre2
         'VG0P2Y', // Lietuva LT2
         'RRVCRL9', // Centas
-        '2LRLRVQ', // Klaipeda
         '9PP9Q8YP', // LTU
         '28LJYCR', // GF SAVI
         'GVUYPYC', // LTeSports
