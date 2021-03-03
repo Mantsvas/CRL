@@ -52,7 +52,11 @@ class UpdateCWResults extends Command
         foreach ($clans as $tag) {
             $data = $this->api->getCurrentRiverRace($tag);
             $existingRiverRace = $riverRaces->where('clan_tag', $tag)->first();
-            $this->clanService->updateCurrentRiverRace($data, $existingRiverRace);
+            if (!isset($data->clans)) {
+                dump($tag);
+            } else {
+                $this->clanService->updateCurrentRiverRace($data, $existingRiverRace);
+            }
         }
     }
 }
